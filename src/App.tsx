@@ -1,5 +1,11 @@
+import Roulette from "./roulette/Roulette";
+
 function App() {
-  return <div className="text-blue-500">Hello world!</div>;
+  return (
+    <div className="h-screen">
+      <Roulette />
+    </div>
+  );
 }
 
 export default App;
