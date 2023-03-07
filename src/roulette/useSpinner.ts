@@ -19,6 +19,7 @@ export const useSpinner = (items: ItemEntry[]) => {
   const angleMotionValue = useSpring(0, {
     duration: 6000,
     bounce: 0.1,
+    // stiffness: 100,
   });
 
   function start() {

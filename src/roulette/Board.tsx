@@ -1,18 +1,13 @@
 import { useFrame } from "@react-three/fiber";
+import { useAtomValue } from "jotai";
 import { useRef } from "react";
 import { Group } from "three";
+import { entryList } from "../states";
 import Spinner from "./Spinner";
 import { useSpinner } from "./useSpinner";
 
 export default function Board() {
-  const items = [
-    { key: "0", content: "1" },
-    { key: "1", content: "A" },
-    { key: "2", content: "2" },
-    { key: "3", content: "2" },
-    { key: "4", content: "2" },
-    { key: "5", content: "2" },
-  ];
+  const items = useAtomValue(entryList);
 
   const spinnerRef = useRef<Group>(null);
 

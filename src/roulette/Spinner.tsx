@@ -57,9 +57,14 @@ const Spinner: FC<SpinnerProps> = ({ items }) => {
             />
           </mesh>
           <Text
+            font="/SUIT-Medium.ttf"
             color="black"
-            rotation={[-Math.PI / 2, 0, -Math.PI / 2]}
-            position={[2, 0.1, 0]}
+            rotation={[-Math.PI / 2, 0, -(2 * Math.PI * 2) / items.length]}
+            position={[
+              2 * Math.sin((2 * Math.PI) / items.length / 2),
+              0.2,
+              2 * Math.cos((2 * Math.PI) / items.length / 2),
+            ]}
             fontSize={0.4}
             anchorX="center"
             anchorY="middle"

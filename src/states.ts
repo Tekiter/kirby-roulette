@@ -1,5 +1,5 @@
 import { atom } from "jotai";
 
-const entryList = atom<string[]>([]);
+export const entryList = atom<{ key: string; content: string }[]>([]);
 
 const angle = atom(0);
