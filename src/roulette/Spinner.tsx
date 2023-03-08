@@ -6,16 +6,15 @@ interface SpinnerProps {
 }
 
 const colors: string[] = [
-  "#EC3843",
-  "#FD5860",
-  "#FF8C76",
-  "#4AD1AC",
-  "#1A9A7C",
-  "#6D6EF0",
-  "#1739DC",
-  "#DEC3C1",
+  "#3843D0",
   "#FFAF5A",
-  "#92D8E6",
+  "#4AD1AC",
+  "#FD5860",
+  "#63E2FB",
+  "#FF8C76",
+  "#EC3843",
+  "#6D6EF0",
+  "#1A9A7C",
 ];
 
 const Spinner: FC<SpinnerProps> = ({ items }) => {
@@ -44,7 +43,7 @@ const Spinner: FC<SpinnerProps> = ({ items }) => {
                 args={[
                   2.5,
                   2.5,
-                  0.1,
+                  0.3,
                   64,
                   undefined,
                   undefined,
@@ -62,17 +61,15 @@ const Spinner: FC<SpinnerProps> = ({ items }) => {
             <Text
               castShadow
               receiveShadow
-              font="/SUIT-Medium.ttf"
-              color="#0D0040"
+              maxWidth={4}
+              font="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff"
+              color="#fbfbfb"
               rotation={[-Math.PI / 2, 0, angle / 2 + Math.PI]}
-              position={[
-                2 * Math.sin(angle / 2),
-                0.15,
-                2 * Math.cos(angle / 2),
-              ]}
-              fontSize={0.2}
+              position={[2 * Math.sin(angle / 2), 0.2, 2 * Math.cos(angle / 2)]}
+              fontSize={0.185}
               anchorX="center"
               anchorY="middle"
+              textAlign="center"
             >
               {item.content}
             </Text>

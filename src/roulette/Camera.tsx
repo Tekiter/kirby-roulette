@@ -24,10 +24,14 @@ const Camera: FC<CameraProps> = ({}) => {
 
   useEffect(() => {
     if (mode === "edit") {
-      cameraPos.set(-2, 2.5, 2);
-      targetLookAtPos.set(-1, 2.5, 0);
+      //   cameraPos.set(-1.5, 4, 2);
+      //   targetLookAtPos.set(-1, 3.2, 0);
+      cameraPos.set(-3, 4, 3.5);
+      targetLookAtPos.set(-1, 3, 0);
     } else if (mode === "play") {
-      cameraPos.set(0, 2.7, 3);
+      //   cameraPos.set(0, 2.7, 3);
+      //   targetLookAtPos.set(0, 2.7, 0);
+      cameraPos.set(0, 2.7, 5);
       targetLookAtPos.set(0, 2.7, 0);
     }
   }, [mode]);

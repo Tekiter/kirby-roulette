@@ -48,22 +48,19 @@ export default function Board() {
           color="#D6DBE0"
         />
       </mesh>
-      <Button position={[-0.2, 0.1, 0.5]} onClick={switchMode}>
-        {({ isHovered }) => (
-          <>
-            <motion.meshBasicMaterial
-              animate={{ color: isHovered ? "#e3e3e3" : "#8E59FF" }}
-            />
-          </>
-        )}
-      </Button>
-      <Button position={[0.2, 0.1, 0.5]} onClick={handleStart}>
-        {({ isHovered }) => (
-          <motion.meshBasicMaterial
-            animate={{ color: isHovered ? "#e3e3e3" : "#FF80A9" }}
-          />
-        )}
-      </Button>
+      <Button
+        position={[0.25, 0.1, 0.7]}
+        color="#FF80A9"
+        hoverColor="#e3e3e3"
+        onClick={handleStart}
+      />
+      <Button
+        position={[-0.25, 0.1, 0.7]}
+        color="#8E59FF"
+        hoverColor="#a47ff6"
+        onClick={switchMode}
+      />
+
       <group
         ref={spinnerRef}
         position={[0, 2.7, 0]}
@@ -74,12 +71,12 @@ export default function Board() {
       <Text
         castShadow
         receiveShadow
-        font="/SUIT-Medium.ttf"
+        font="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff"
         color="black"
-        rotation={[-Math.PI / 2, 0, 0]}
-        position={[0, 0, -4]}
-        fontSize={1}
-        anchorX="center"
+        rotation={[0, 0, 0]}
+        position={[3, 0, 0]}
+        fontSize={0.3}
+        anchorX="left"
         anchorY="middle"
       >
         {targetItem?.content}

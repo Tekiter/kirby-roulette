@@ -1,31 +1,54 @@
 import { useCursor } from "@react-three/drei";
-import { FC, ReactNode, useState } from "react";
+import { FC, useState } from "react";
 import { motion } from "framer-motion-3d";
 
 interface ButtonProps {
   position?: [number, number, number];
-  children?: ReactNode | ((args: { isHovered: boolean }) => ReactNode);
+  color: string;
+  hoverColor: string;
   onClick?: () => void;
 }
 
-const Button: FC<ButtonProps> = ({ position, children, onClick }) => {
+const Button: FC<ButtonProps> = ({ position, color, hoverColor, onClick }) => {
   const [hovered, setHovered] = useState(false);
+  const [pressed, setPressed] = useState(false);
 
   useCursor(hovered, "pointer", "auto");
 
   return (
-    <mesh
-      castShadow
+    <group
       position={position}
-      onClick={onClick}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick?.();
+      }}
       onPointerOver={() => setHovered(true)}
-      onPointerLeave={() => setHovered(false)}
+      onPointerLeave={() => {
+        setHovered(false);
+        setPressed(false);
+      }}
+      onPointerDown={() => setPressed(true)}
+      onPointerUp={() => setPressed(false)}
     >
-      <boxGeometry args={[0.3, 0.1, 0.3]} />
-      {typeof children === "function"
-        ? children({ isHovered: hovered })
-        : children}
-    </mesh>
+      <mesh castShadow>
+        <cylinderGeometry args={[0.2, 0.2, 0.05]} />
+
+        <motion.meshStandardMaterial
+          animate={{ color: hovered ? hoverColor : color }}
+        />
+      </mesh>
+      <motion.mesh
+        castShadow
+        receiveShadow
+        position={[0, 0.05, 0]}
+        animate={{ y: pressed ? 0.03 : 0.05 }}
+      >
+        <cylinderGeometry args={[0.16, 0.16, 0.025]} />
+        <motion.meshStandardMaterial
+          animate={{ color: hovered ? hoverColor : color }}
+        />
+      </motion.mesh>
+    </group>
   );
 };
 
