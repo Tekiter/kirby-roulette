@@ -20,4 +20,4 @@ export const targetItemAtom = atom((get) => {
   return list.find((_, idx) => pieceAngle * (idx + 1) > angle) ?? null;
 });
 
-export const cameraState = atom<"" | "">("");
+export const modeAtom = atom<"play" | "edit">("edit");

@@ -6,16 +6,16 @@ interface SpinnerProps {
 }
 
 const colors: string[] = [
-  "#F0A3FF",
-  "#0075DC",
-  "#993F00",
-  "#4C005C",
-  "#2BCE48",
-  "#FFCC99",
-  "#808080",
-  "#94FFB5",
-  "#8F7C00",
-  "#FFA07A",
+  "#EC3843",
+  "#FD5860",
+  "#FF8C76",
+  "#4AD1AC",
+  "#1A9A7C",
+  "#6D6EF0",
+  "#1739DC",
+  "#DEC3C1",
+  "#FFAF5A",
+  "#92D8E6",
 ];
 
 const Spinner: FC<SpinnerProps> = ({ items }) => {
@@ -27,7 +27,7 @@ const Spinner: FC<SpinnerProps> = ({ items }) => {
           roughness={1}
           transparent
           opacity={0.8}
-          color="green"
+          color="#E6E5ED"
         />
       </mesh>
       {items.map((item, idx) => {
@@ -63,7 +63,7 @@ const Spinner: FC<SpinnerProps> = ({ items }) => {
               castShadow
               receiveShadow
               font="/SUIT-Medium.ttf"
-              color="black"
+              color="#0D0040"
               rotation={[-Math.PI / 2, 0, angle / 2 + Math.PI]}
               position={[
                 2 * Math.sin(angle / 2),

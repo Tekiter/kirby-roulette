@@ -1,8 +1,8 @@
 import { useFrame } from "@react-three/fiber";
-import { useAtomValue } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import { useRef } from "react";
 import { Group } from "three";
-import { entryListAtom, targetItemAtom } from "./states";
+import { entryListAtom, modeAtom, targetItemAtom } from "./states";
 import Button from "./Button";
 import Spinner from "./Spinner";
 import { useSpinner } from "./useSpinner";
@@ -14,6 +14,7 @@ export default function Board() {
   const spinnerRef = useRef<Group>(null);
   const { angleMotionValue, start } = useSpinner();
   const targetItem = useAtomValue(targetItemAtom);
+  const setMode = useSetAtom(modeAtom);
 
   useFrame(() => {
     if (spinnerRef.current) {
@@ -21,34 +22,53 @@ export default function Board() {
     }
   });
 
+  function switchMode() {
+    setMode((prev) => {
+      if (prev === "play") {
+        return "edit";
+      } else {
+        return "play";
+      }
+    });
+  }
+
+  function handleStart() {
+    start();
+    setMode("play");
+  }
+
   return (
-    <group position={[0, 0, -1]} rotation={[Math.PI / 2, 0, 0]}>
+    <group position={[0, 0, -1]}>
       <mesh receiveShadow position={[0, 0, 0]}>
-        <boxGeometry args={[6, 0.1, 6]} />
+        <boxGeometry args={[4, 0.1, 2]} />
         <meshStandardMaterial
           roughness={1}
           transparent
           opacity={0.6}
-          color="aquamarine"
+          color="#D6DBE0"
         />
       </mesh>
-      <Button position={[2.5, 0.1, 2.5]} onClick={start}>
+      <Button position={[-0.2, 0.1, 0.5]} onClick={switchMode}>
         {({ isHovered }) => (
           <>
             <motion.meshBasicMaterial
-              animate={{ color: isHovered ? "#e3e3e3" : "#ffffff" }}
+              animate={{ color: isHovered ? "#e3e3e3" : "#8E59FF" }}
             />
           </>
         )}
       </Button>
-      <Button position={[2, 0.1, 2.5]} onClick={start}>
+      <Button position={[0.2, 0.1, 0.5]} onClick={handleStart}>
         {({ isHovered }) => (
           <motion.meshBasicMaterial
-            animate={{ color: isHovered ? "#e3e3e3" : "#3eeeee" }}
+            animate={{ color: isHovered ? "#e3e3e3" : "#FF80A9" }}
           />
         )}
       </Button>
-      <group ref={spinnerRef} position={[0, 0.1, 0]}>
+      <group
+        ref={spinnerRef}
+        position={[0, 2.7, 0]}
+        rotation={[Math.PI / 2, 0, 0]}
+      >
         <Spinner items={items} />
       </group>
       <Text
