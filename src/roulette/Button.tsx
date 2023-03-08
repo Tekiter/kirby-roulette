@@ -1,13 +1,14 @@
 import { useCursor } from "@react-three/drei";
-import { FC, useState } from "react";
+import { FC, ReactNode, useState } from "react";
 import { motion } from "framer-motion-3d";
 
 interface ButtonProps {
   position?: [number, number, number];
+  children?: ReactNode | ((args: { isHovered: boolean }) => ReactNode);
   onClick?: () => void;
 }
 
-const Button: FC<ButtonProps> = ({ position, onClick }) => {
+const Button: FC<ButtonProps> = ({ position, children, onClick }) => {
   const [hovered, setHovered] = useState(false);
 
   useCursor(hovered, "pointer", "auto");
@@ -21,9 +22,9 @@ const Button: FC<ButtonProps> = ({ position, onClick }) => {
       onPointerLeave={() => setHovered(false)}
     >
       <boxGeometry args={[0.3, 0.1, 0.3]} />
-      <motion.meshBasicMaterial
-        animate={{ color: hovered ? "#000000" : "#ffffff" }}
-      />
+      {typeof children === "function"
+        ? children({ isHovered: hovered })
+        : children}
     </mesh>
   );
 };

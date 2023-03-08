@@ -1,6 +1,7 @@
 import { animate, useMotionValue } from "framer-motion";
+import { useAtom } from "jotai";
 import { MersenneTwister19937, real } from "random-js";
-import { useRef } from "react";
+import { targetAngleAtom } from "./states";
 
 const engine = MersenneTwister19937.autoSeed();
 
@@ -8,13 +9,8 @@ function randomAngle() {
   return real(0, 2 * Math.PI)(engine);
 }
 
-interface ItemEntry {
-  key: string;
-  content: string;
-}
-
-export const useSpinner = (items: ItemEntry[]) => {
-  const targetAngleRef = useRef(0);
+export const useSpinner = () => {
+  const [targetAngle, setTargetAngle] = useAtom(targetAngleAtom);
 
   const value = useMotionValue(0);
 
@@ -31,11 +27,12 @@ export const useSpinner = (items: ItemEntry[]) => {
       ease: [0.3, 0.99, 0.34, 1],
     });
 
-    targetAngleRef.current = newAngle;
+    setTargetAngle(newAngle);
   }
 
   return {
     angleMotionValue: value,
+    targetAngle,
     start,
   };
 };

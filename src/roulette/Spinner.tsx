@@ -37,7 +37,7 @@ const Spinner: FC<SpinnerProps> = ({ items }) => {
           <group
             key={item.key}
             position={[0, 0.1, 0]}
-            rotation={[0, angle * idx, 0]}
+            rotation={[0, angle * idx + Math.PI, 0]}
           >
             <mesh receiveShadow>
               <cylinderGeometry

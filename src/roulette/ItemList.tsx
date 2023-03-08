@@ -1,13 +1,13 @@
 import { useAtom } from "jotai";
 import { nanoid } from "nanoid";
 import { FC, KeyboardEvent, useRef, useState } from "react";
-import { entryList } from "../states";
-import { AnimatePresence, motion, Reorder } from "framer-motion";
+import { entryListAtom } from "./states";
+import { AnimatePresence, Reorder } from "framer-motion";
 
 interface ItemListProps {}
 
 const ItemList: FC<ItemListProps> = ({}) => {
-  const [itemList, setItemList] = useAtom(entryList);
+  const [itemList, setItemList] = useAtom(entryListAtom);
 
   const textRef = useRef<HTMLInputElement>(null);
   const [text, setText] = useState("");
