@@ -10,7 +10,7 @@ interface RouletteProps {}
 const Roulette: FC<RouletteProps> = ({}) => {
   return (
     <>
-      <Canvas camera={{ fov: 90, position: [0, 0, 3.5] }}>
+      <Canvas dpr={[1, 2]} camera={{ fov: 90, position: [0, 0, 3.5] }} shadows>
         <color attach="background" args={["#fef4ef"]} />
         <Light />
 

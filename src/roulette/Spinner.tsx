@@ -39,7 +39,7 @@ const Spinner: FC<SpinnerProps> = ({ items }) => {
             position={[0, 0.1, 0]}
             rotation={[0, angle * idx, 0]}
           >
-            <mesh>
+            <mesh receiveShadow>
               <cylinderGeometry
                 args={[
                   2.5,
@@ -55,11 +55,13 @@ const Spinner: FC<SpinnerProps> = ({ items }) => {
               <meshStandardMaterial
                 roughness={1}
                 transparent
-                opacity={0.8}
+                opacity={1}
                 color={colors[idx % colors.length]}
               />
             </mesh>
             <Text
+              castShadow
+              receiveShadow
               font="/SUIT-Medium.ttf"
               color="black"
               rotation={[-Math.PI / 2, 0, angle / 2 + Math.PI]}
