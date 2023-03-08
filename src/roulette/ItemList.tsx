@@ -36,7 +36,7 @@ const ItemList: FC<ItemListProps> = ({}) => {
   }
 
   return (
-    <div className="absolute top-0 right-0 bottom-0 overflow-hidden">
+    <div className="absolute top-0 right-0 bottom-0 overflow-hidden font-hand">
       <AnimatePresence>
         {mode === "edit" && (
           <motion.div
@@ -49,7 +49,7 @@ const ItemList: FC<ItemListProps> = ({}) => {
             }}
           >
             <div className="h-full flex flex-col backdrop-blur-md bg-white/30 rounded border border-slate-200">
-              <div className="flex items-stretch pt-3 px-3">
+              <div className="flex items-stretch pt-3 px-3 pb-2">
                 <input
                   ref={textRef}
                   type="text"
@@ -86,7 +86,7 @@ const ItemList: FC<ItemListProps> = ({}) => {
                       animate={{ opacity: 1, x: 0 }}
                       whileDrag={{ backgroundColor: "#e3e3e3" }}
                     >
-                      <div className="grow">{item.content}</div>
+                      <div className="grow text-lg">{item.content}</div>
                       <div>
                         <button
                           className="px-2 hover:bg-slate-400/30 transition-colors"

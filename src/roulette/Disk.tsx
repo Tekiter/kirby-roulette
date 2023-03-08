@@ -20,14 +20,9 @@ const colors: string[] = [
 const Disk: FC<DiskProps> = ({ items }) => {
   return (
     <>
-      <mesh castShadow position={[0, 0, 0]}>
-        <cylinderGeometry args={[2.6, 2.6, 0.1, 64]} />
-        <meshStandardMaterial
-          roughness={1}
-          transparent
-          opacity={0.8}
-          color="#E6E5ED"
-        />
+      <mesh castShadow receiveShadow position={[0, -0.4, 0]}>
+        <cylinderGeometry args={[2.77, 2.7, 0.5, 64]} />
+        <meshStandardMaterial roughness={1} color="#E6E5ED" />
       </mesh>
       {items.map((item, idx) => {
         const angle = (2 * Math.PI) / items.length;
