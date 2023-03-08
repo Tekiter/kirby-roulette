@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { FC } from "react";
-import Board from "./Board";
+import Spinner from "./Spinner";
 import Camera from "./Camera";
 import ItemList from "./ItemList";
 import Light from "./Light";
@@ -14,7 +14,7 @@ const Roulette: FC<RouletteProps> = ({}) => {
         <color attach="background" args={["#e0b7ff"]} />
         <Light />
 
-        <Board />
+        <Spinner />
         <Camera />
       </Canvas>
       <ItemList />
