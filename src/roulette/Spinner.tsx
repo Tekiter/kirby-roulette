@@ -30,49 +30,49 @@ const Spinner: FC<SpinnerProps> = ({ items }) => {
           color="green"
         />
       </mesh>
-      {items.map((item, idx) => (
-        <group
-          key={item.key}
-          position={[0, 0.1, 0]}
-          rotation={[0, ((2 * Math.PI) / items.length) * idx, 0]}
-        >
-          <mesh>
-            <cylinderGeometry
-              args={[
-                2.5,
-                2.5,
-                0.1,
-                64,
-                undefined,
-                undefined,
-                undefined,
-                (2 * Math.PI) / items.length,
-              ]}
-            />
-            <meshStandardMaterial
-              roughness={1}
-              transparent
-              opacity={0.8}
-              color={colors[idx % colors.length]}
-            />
-          </mesh>
-          <Text
-            font="/SUIT-Medium.ttf"
-            color="black"
-            rotation={[-Math.PI / 2, 0, -(2 * Math.PI * 2) / items.length]}
-            position={[
-              2 * Math.sin((2 * Math.PI) / items.length / 2),
-              0.2,
-              2 * Math.cos((2 * Math.PI) / items.length / 2),
-            ]}
-            fontSize={0.4}
-            anchorX="center"
-            anchorY="middle"
+      {items.map((item, idx) => {
+        const angle = (2 * Math.PI) / items.length;
+
+        return (
+          <group
+            key={item.key}
+            position={[0, 0.1, 0]}
+            rotation={[0, angle * idx, 0]}
           >
-            {item.content}
-          </Text>
-        </group>
-      ))}
+            <mesh>
+              <cylinderGeometry
+                args={[
+                  2.5,
+                  2.5,
+                  0.1,
+                  64,
+                  undefined,
+                  undefined,
+                  undefined,
+                  (2 * Math.PI) / items.length,
+                ]}
+              />
+              <meshStandardMaterial
+                roughness={1}
+                transparent
+                opacity={0.8}
+                color={colors[idx % colors.length]}
+              />
+            </mesh>
+            <Text
+              font="/SUIT-Medium.ttf"
+              color="black"
+              rotation={[-Math.PI / 2, 0, angle / 2 + Math.PI]}
+              position={[2 * Math.sin(angle / 2), 0.2, 2 * Math.cos(angle / 2)]}
+              fontSize={0.4}
+              anchorX="center"
+              anchorY="middle"
+            >
+              {item.content}
+            </Text>
+          </group>
+        );
+      })}
     </>
   );
 };
