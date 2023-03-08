@@ -55,7 +55,7 @@ const ItemList: FC<ItemListProps> = ({}) => {
             </button>
           </div>
           <Reorder.Group
-            className="overflow-auto flex-1"
+            className="overflow-y-auto overflow-x-clip flex-1"
             axis="y"
             values={itemList}
             onReorder={setItemList}

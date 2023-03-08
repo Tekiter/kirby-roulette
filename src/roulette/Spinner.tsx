@@ -65,8 +65,12 @@ const Spinner: FC<SpinnerProps> = ({ items }) => {
               font="/SUIT-Medium.ttf"
               color="black"
               rotation={[-Math.PI / 2, 0, angle / 2 + Math.PI]}
-              position={[2 * Math.sin(angle / 2), 0.2, 2 * Math.cos(angle / 2)]}
-              fontSize={0.4}
+              position={[
+                2 * Math.sin(angle / 2),
+                0.15,
+                2 * Math.cos(angle / 2),
+              ]}
+              fontSize={0.2}
               anchorX="center"
               anchorY="middle"
             >

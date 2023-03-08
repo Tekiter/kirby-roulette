@@ -3,6 +3,7 @@ import { useAtomValue } from "jotai";
 import { useRef } from "react";
 import { Group } from "three";
 import { entryList } from "../states";
+import Button from "./Button";
 import Spinner from "./Spinner";
 import { useSpinner } from "./useSpinner";
 
@@ -30,10 +31,7 @@ export default function Board() {
           color="aquamarine"
         />
       </mesh>
-      <mesh castShadow position={[2.5, 0.1, 2.5]} onClick={start}>
-        <boxGeometry args={[0.3, 0.1, 0.3]} />
-        <meshBasicMaterial />
-      </mesh>
+      <Button position={[2.5, 0.1, 2.5]} onClick={start} />
       <group ref={spinnerRef} position={[0, 0.1, 0]}>
         <Spinner items={items} />
       </group>

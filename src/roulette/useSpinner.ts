@@ -1,6 +1,6 @@
-import { useSpring } from "framer-motion";
+import { animate, useMotionValue } from "framer-motion";
 import { MersenneTwister19937, real } from "random-js";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 
 const engine = MersenneTwister19937.autoSeed();
 
@@ -16,25 +16,26 @@ interface ItemEntry {
 export const useSpinner = (items: ItemEntry[]) => {
   const targetAngleRef = useRef(0);
 
-  const angleMotionValue = useSpring(0, {
-    duration: 6000,
-    bounce: 0.1,
-    // stiffness: 100,
-  });
+  const value = useMotionValue(0);
 
   function start() {
     const newAngle = randomAngle();
 
-    const lastAngle: number = angleMotionValue.get();
+    const lastAngle: number = value.get();
 
-    angleMotionValue.jump(lastAngle - Math.PI * 2 * 5);
-    angleMotionValue.set(newAngle);
+    value.jump(lastAngle - Math.PI * 2 * 5);
+
+    animate(value, newAngle, {
+      type: "tween",
+      duration: 5,
+      ease: [0.3, 0.99, 0.34, 1],
+    });
 
     targetAngleRef.current = newAngle;
   }
 
   return {
-    angleMotionValue,
+    angleMotionValue: value,
     start,
   };
 };
