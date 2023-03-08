@@ -2,6 +2,7 @@ import { useAtom } from "jotai";
 import { nanoid } from "nanoid";
 import { FC, KeyboardEvent, useRef, useState } from "react";
 import { entryList } from "../states";
+import { AnimatePresence, motion, Reorder } from "framer-motion";
 
 interface ItemListProps {}
 
@@ -21,6 +22,10 @@ const ItemList: FC<ItemListProps> = ({}) => {
   }
 
   function addItem() {
+    textRef.current?.focus();
+    if (!text) {
+      return;
+    }
     setItemList((list) => [...list, { key: nanoid(), content: text }]);
     setText("");
   }
@@ -31,26 +36,55 @@ const ItemList: FC<ItemListProps> = ({}) => {
 
   return (
     <div className="absolute top-0 right-0 bottom-0">
-      <div className="flex">
-        <input
-          ref={textRef}
-          type="text"
-          className="grow block"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-        <button onClick={addItem}>Add</button>
-      </div>
-      <div>
-        {itemList.map((item) => (
-          <div className="flex ">
-            <div className="grow">{item.content}</div>
-            <div>
-              <button onClick={() => handleDelete(item.key)}>X</button>
-            </div>
+      <div className="relative h-full p-5">
+        <div className="h-full flex flex-col backdrop-blur-md bg-white/30 rounded border border-slate-200">
+          <div className="flex items-stretch pt-3 px-3">
+            <input
+              ref={textRef}
+              type="text"
+              className="grow block rounded px-3 py-2 border-stone-300 border"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+            <button
+              onClick={addItem}
+              className="ml-2 rounded bg-sky-500/75 px-3"
+            >
+              +
+            </button>
           </div>
-        ))}
+          <Reorder.Group
+            className="overflow-auto flex-1"
+            axis="y"
+            values={itemList}
+            onReorder={setItemList}
+          >
+            <AnimatePresence initial={false}>
+              {itemList.map((item) => (
+                <Reorder.Item
+                  key={item.key}
+                  className="flex px-3 py-2 items-center"
+                  value={item}
+                  exit={{ opacity: 0, x: 20, transition: { duration: 0.2 } }}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  whileDrag={{ backgroundColor: "#e3e3e3" }}
+                >
+                  <div className="grow">{item.content}</div>
+                  <div>
+                    <button
+                      className="px-2 hover:bg-slate-400/30 transition-colors"
+                      onClick={() => handleDelete(item.key)}
+                    >
+                      X
+                    </button>
+                  </div>
+                </Reorder.Item>
+              ))}
+            </AnimatePresence>
+          </Reorder.Group>
+        </div>
       </div>
     </div>
   );
