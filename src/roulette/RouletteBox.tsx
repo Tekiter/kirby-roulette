@@ -9,7 +9,7 @@ const RouletteBox: FC<RouletteBoxProps> = ({}) => {
       <RoundedBox args={[7, 0.6, 2.5]} position={[0, -0.3, 0.25]} receiveShadow>
         <meshStandardMaterial roughness={1} opacity={1} color="#D6DBE0" />
       </RoundedBox>
-      <RoundedBox args={[7, 10, 2]} position={[0, 1.5, -1.5]} receiveShadow>
+      <RoundedBox args={[7, 10, 2]} position={[0, 1, -1.5]} receiveShadow>
         <meshStandardMaterial roughness={1} opacity={1} color="#D6DBE0" />
       </RoundedBox>
     </>
