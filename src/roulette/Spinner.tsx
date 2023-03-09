@@ -7,13 +7,14 @@ import Button from "./Button";
 import Disk from "./Disk";
 import { useSpinner } from "./useSpinner";
 import { RoundedBox, Text } from "@react-three/drei";
+import ResultBoard from "./ResultBoard";
 
 export default function Spinner() {
   const items = useAtomValue(entryListAtom);
   const spinnerRef = useRef<Group>(null);
   const { angleMotionValue, start } = useSpinner();
-  const targetItem = useAtomValue(targetItemAtom);
   const setMode = useSetAtom(modeAtom);
+  const targetItem = useAtomValue(targetItemAtom);
 
   useFrame(() => {
     if (spinnerRef.current) {
@@ -56,7 +57,7 @@ export default function Spinner() {
       <Button
         position={[0.28, 0, 0.7]}
         color="#FF80A9"
-        hoverColor="#e3e3e3"
+        hoverColor="#ffa4c1"
         onClick={handleStart}
       />
       <Button
@@ -65,20 +66,10 @@ export default function Spinner() {
         hoverColor="#a47ff6"
         onClick={switchMode}
       />
-
-      <Text
-        castShadow
-        receiveShadow
-        font="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff"
-        color="black"
-        rotation={[0, 0, 0]}
+      <ResultBoard
         position={[0, 5.5, 0.3]}
-        fontSize={0.3}
-        anchorX="center"
-        anchorY="middle"
-      >
-        {targetItem?.content}
-      </Text>
+        content={targetItem?.content ?? ""}
+      />
     </group>
   );
 }
