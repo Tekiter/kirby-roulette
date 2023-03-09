@@ -1,4 +1,4 @@
-import { RoundedBox, Text } from "@react-three/drei";
+import { Text } from "@react-three/drei";
 import { FC, useEffect } from "react";
 import { motion } from "framer-motion-3d";
 import { animate, useMotionValue } from "framer-motion";
@@ -26,7 +26,7 @@ const ResultBoard: FC<ResultProps> = ({ content, position }) => {
       <mesh position={[0, 0.3, 0]}>
         <boxGeometry args={[5, 0.6, 0.1]} />
         <motion.meshStandardMaterial
-          animate={{ color: disabled ? "#c3c3c3" : "#68c393" }}
+          animate={{ color: disabled ? "#c3c3c3" : "#cee55d" }}
         />
       </mesh>
       <Text

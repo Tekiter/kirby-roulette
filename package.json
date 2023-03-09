@@ -15,6 +15,7 @@
     "@react-three/csg": "^2.1.1",
     "@react-three/drei": "^9.57.0",
     "@react-three/fiber": "^8.11.9",
+    "@react-three/postprocessing": "^2.7.0",
     "@types/three": "^0.149.0",
     "clsx": "^1.2.1",
     "framer-motion": "^10.1.0",

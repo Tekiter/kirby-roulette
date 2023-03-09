@@ -13,6 +13,7 @@ import Disk from "./Disk";
 import { useSpinner } from "./useSpinner";
 import ResultBoard from "./ResultBoard";
 import RouletteBox from "./RouletteBox";
+import EditButton from "./EditButton";
 
 export default function Spinner() {
   const items = useAtomValue(entryListAtom);
@@ -69,12 +70,8 @@ export default function Spinner() {
         hoverColor="#ffa4c1"
         onClick={handleStart}
       />
-      <Button
-        position={[2.5, 0, 0.7]}
-        color="#8E59FF"
-        hoverColor="#a47ff6"
-        onClick={switchMode}
-      />
+
+      <EditButton position={[2.9, 5.4, -0.5]} />
       <ResultBoard
         position={[0, 6, -0.5]}
         content={spinnerState === "result" ? targetItem?.content ?? null : null}
