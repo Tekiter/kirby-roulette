@@ -2,7 +2,12 @@ import { useFrame } from "@react-three/fiber";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useRef } from "react";
 import { Group } from "three";
-import { entryListAtom, modeAtom, targetItemAtom } from "./states";
+import {
+  entryListAtom,
+  cameraStateAtom,
+  targetItemAtom,
+  spinnerStateAtom,
+} from "./states";
 import Button from "./Button";
 import Disk from "./Disk";
 import { useSpinner } from "./useSpinner";
@@ -12,9 +17,10 @@ import RouletteBox from "./RouletteBox";
 export default function Spinner() {
   const items = useAtomValue(entryListAtom);
   const spinnerRef = useRef<Group>(null);
-  const { angleMotionValue, isRunning, start } = useSpinner();
-  const setMode = useSetAtom(modeAtom);
+  const { angleMotionValue, start } = useSpinner();
+  const setMode = useSetAtom(cameraStateAtom);
   const targetItem = useAtomValue(targetItemAtom);
+  const spinnerState = useAtomValue(spinnerStateAtom);
 
   useFrame(() => {
     if (spinnerRef.current) {
@@ -33,6 +39,9 @@ export default function Spinner() {
   }
 
   function handleStart() {
+    if (spinnerState === "running") {
+      return;
+    }
     start();
     setMode("play");
   }
@@ -43,11 +52,16 @@ export default function Spinner() {
 
       <group
         ref={spinnerRef}
-        position={[0, 2.7, 0]}
+        position={[0, 2.8, -0.2]}
         rotation={[Math.PI / 2, 0, 0]}
       >
         <Disk items={items} />
       </group>
+
+      <mesh position={[0, 5.5, -0.15]} rotation={[Math.PI / 2, 0, 0]}>
+        <cylinderGeometry args={[0.15, 0.15, 0.05, 3]} />
+        <meshStandardMaterial color="#EC3843" />
+      </mesh>
 
       <Button
         position={[0, 0, 0.7]}
@@ -63,7 +77,7 @@ export default function Spinner() {
       />
       <ResultBoard
         position={[0, 6, -0.5]}
-        content={!isRunning ? targetItem?.content ?? null : null}
+        content={spinnerState === "result" ? targetItem?.content ?? null : null}
       />
     </group>
   );

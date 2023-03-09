@@ -1,7 +1,7 @@
 export default function Light() {
   return (
     <>
-      <ambientLight intensity={0.7} />;
+      <ambientLight intensity={0.8} />;
       <directionalLight
         castShadow
         intensity={0.8}

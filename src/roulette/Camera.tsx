@@ -2,12 +2,12 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useAtomValue } from "jotai";
 import { FC, useEffect, useMemo } from "react";
 import { Vector3 } from "three";
-import { modeAtom } from "./states";
+import { cameraStateAtom } from "./states";
 
 interface CameraProps {}
 
 const Camera: FC<CameraProps> = ({}) => {
-  const mode = useAtomValue(modeAtom);
+  const mode = useAtomValue(cameraStateAtom);
   const { camera } = useThree((camera) => camera);
 
   const cameraPos = useMemo(() => new Vector3(0, 0, 0), []);

@@ -1,8 +1,8 @@
 import { animate, useMotionValue } from "framer-motion";
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { MersenneTwister19937, real } from "random-js";
-import { useEffect, useState } from "react";
-import { targetAngleAtom } from "./states";
+import { useEffect } from "react";
+import { spinnerStateAtom, targetAngleAtom } from "./states";
 
 const engine = MersenneTwister19937.autoSeed();
 
@@ -12,7 +12,7 @@ function randomAngle() {
 
 export const useSpinner = () => {
   const [targetAngle, setTargetAngle] = useAtom(targetAngleAtom);
-  const [isRunning, setIsRunning] = useState(true);
+  const setSpinnerState = useSetAtom(spinnerStateAtom);
 
   const value = useMotionValue(0);
 
@@ -29,13 +29,13 @@ export const useSpinner = () => {
       ease: [0.3, 0.99, 0.34, 1],
     });
 
-    setIsRunning(true);
+    setSpinnerState("running");
     setTargetAngle(newAngle);
   }
 
   useEffect(() => {
     const release = value.on("animationComplete", () => {
-      setIsRunning(false);
+      setSpinnerState("result");
     });
 
     return () => {
@@ -45,7 +45,6 @@ export const useSpinner = () => {
 
   return {
     angleMotionValue: value,
-    isRunning,
     targetAngle,
     start,
   };
