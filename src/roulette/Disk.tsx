@@ -1,5 +1,6 @@
 import { Text } from "@react-three/drei";
 import { FC } from "react";
+import { motion } from "framer-motion-3d";
 
 interface DiskProps {
   items: { key: string; content: string }[];
@@ -33,12 +34,12 @@ const Disk: FC<DiskProps> = ({ items }) => {
             position={[0, 0.1, 0]}
             rotation={[0, angle * idx + Math.PI, 0]}
           >
-            <mesh receiveShadow>
-              <cylinderGeometry
+            <mesh receiveShadow castShadow>
+              <motion.cylinderGeometry
                 args={[
                   2.5,
                   2.5,
-                  0.3,
+                  0.1,
                   64,
                   undefined,
                   undefined,
@@ -54,13 +55,17 @@ const Disk: FC<DiskProps> = ({ items }) => {
               />
             </mesh>
             <Text
-              castShadow
-              receiveShadow
-              maxWidth={4}
+              maxWidth={Math.min(angle * 1.5, 2)}
+              lineHeight={1}
+              overflowWrap={"break-word"}
               font="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff"
               color="#fbfbfb"
               rotation={[-Math.PI / 2, 0, angle / 2 + Math.PI]}
-              position={[2 * Math.sin(angle / 2), 0.2, 2 * Math.cos(angle / 2)]}
+              position={[
+                2 * Math.sin(angle / 2),
+                0.155,
+                2 * Math.cos(angle / 2),
+              ]}
               fontSize={0.185}
               anchorX="center"
               anchorY="middle"
@@ -71,6 +76,10 @@ const Disk: FC<DiskProps> = ({ items }) => {
           </group>
         );
       })}
+      <mesh position={[0, 0.2, 0]} castShadow>
+        <capsuleGeometry args={[0.05, 0.2]} />
+        <meshStandardMaterial color="#ddddddff" />
+      </mesh>
     </>
   );
 };

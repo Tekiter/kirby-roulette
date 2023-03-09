@@ -15,9 +15,9 @@ const Camera: FC<CameraProps> = ({}) => {
   const targetLookAtPos = useMemo(() => new Vector3(0, 0, 0), []);
 
   useFrame(() => {
-    currentLookAtPos.lerp(targetLookAtPos, 0.05);
+    currentLookAtPos.lerp(targetLookAtPos, 0.03);
 
-    camera.position.lerp(cameraPos, 0.05);
+    camera.position.lerp(cameraPos, 0.03);
     camera.lookAt(currentLookAtPos);
     camera.updateProjectionMatrix();
   });
@@ -25,9 +25,9 @@ const Camera: FC<CameraProps> = ({}) => {
   useEffect(() => {
     if (mode === "edit") {
       cameraPos.set(-4.5, 4.5, 3.5);
-      targetLookAtPos.set(-1, 3, 0);
+      targetLookAtPos.set(-1, 3.5, 0);
     } else if (mode === "play") {
-      cameraPos.set(0, 2.7, 5);
+      cameraPos.set(0, 2.7, 6);
       targetLookAtPos.set(0, 2.7, 0);
     }
   }, [mode]);

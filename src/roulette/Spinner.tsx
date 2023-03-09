@@ -6,13 +6,13 @@ import { entryListAtom, modeAtom, targetItemAtom } from "./states";
 import Button from "./Button";
 import Disk from "./Disk";
 import { useSpinner } from "./useSpinner";
-import { RoundedBox, Text } from "@react-three/drei";
 import ResultBoard from "./ResultBoard";
+import RouletteBox from "./RouletteBox";
 
 export default function Spinner() {
   const items = useAtomValue(entryListAtom);
   const spinnerRef = useRef<Group>(null);
-  const { angleMotionValue, start } = useSpinner();
+  const { angleMotionValue, isRunning, start } = useSpinner();
   const setMode = useSetAtom(modeAtom);
   const targetItem = useAtomValue(targetItemAtom);
 
@@ -39,12 +39,7 @@ export default function Spinner() {
 
   return (
     <group position={[0, 0, -1]}>
-      <RoundedBox args={[7, 0.6, 2]} position={[0, -0.3, 0]} receiveShadow>
-        <meshStandardMaterial roughness={1} opacity={1} color="#D6DBE0" />
-      </RoundedBox>
-      <RoundedBox args={[7, 10, 2]} position={[0, 1.5, -1.5]}>
-        <meshStandardMaterial roughness={1} opacity={1} color="#D6DBE0" />
-      </RoundedBox>
+      <RouletteBox />
 
       <group
         ref={spinnerRef}
@@ -55,20 +50,20 @@ export default function Spinner() {
       </group>
 
       <Button
-        position={[0.28, 0, 0.7]}
+        position={[0, 0, 0.7]}
         color="#FF80A9"
         hoverColor="#ffa4c1"
         onClick={handleStart}
       />
       <Button
-        position={[-0.28, 0, 0.7]}
+        position={[2.5, 0, 0.7]}
         color="#8E59FF"
         hoverColor="#a47ff6"
         onClick={switchMode}
       />
       <ResultBoard
-        position={[0, 5.5, 0.3]}
-        content={targetItem?.content ?? ""}
+        position={[0, 6, -0.5]}
+        content={!isRunning ? targetItem?.content ?? null : null}
       />
     </group>
   );

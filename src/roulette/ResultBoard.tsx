@@ -1,17 +1,22 @@
 import { Text } from "@react-three/drei";
 import { FC } from "react";
+import { motion } from "framer-motion-3d";
 
 interface ResultProps {
-  content: string;
+  content: string | null;
   position: [number, number, number];
 }
 
 const ResultBoard: FC<ResultProps> = ({ content, position }) => {
+  const disabled = content === null;
+
   return (
     <group position={position}>
       <mesh position={[0, 0, 0.05]}>
-        <boxGeometry args={[3, 0.6, 0.1]} />
-        <meshStandardMaterial color="green" />
+        <boxGeometry args={[5, 0.6, 0.1]} />
+        <motion.meshStandardMaterial
+          animate={{ color: disabled ? "#c3c3c3" : "#68c393" }}
+        />
       </mesh>
       <Text
         castShadow
