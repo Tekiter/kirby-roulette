@@ -65,18 +65,12 @@ const ItemList: FC<ItemListProps> = ({}) => {
                   +
                 </button>
               </div>
-              <Reorder.Group
-                className="overflow-y-auto overflow-x-clip flex-1"
-                axis="y"
-                values={itemList}
-                onReorder={setItemList}
-              >
+              <motion.div className="overflow-y-auto overflow-x-clip flex-1">
                 <AnimatePresence initial={false}>
                   {itemList.map((item) => (
-                    <Reorder.Item
+                    <motion.div
                       key={item.key}
                       className="flex px-3 py-2 items-center"
-                      value={item}
                       exit={{
                         opacity: 0,
                         x: 20,
@@ -95,10 +89,10 @@ const ItemList: FC<ItemListProps> = ({}) => {
                           X
                         </button>
                       </div>
-                    </Reorder.Item>
+                    </motion.div>
                   ))}
                 </AnimatePresence>
-              </Reorder.Group>
+              </motion.div>
             </div>
           </motion.div>
         )}
