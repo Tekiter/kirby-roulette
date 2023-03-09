@@ -34,6 +34,6 @@ export const targetItemAtom = atom((get) => {
   return list.find((_, idx) => pieceAngle * (idx + 1) > angle) ?? null;
 });
 
-export const cameraStateAtom = atom<"play" | "edit">("edit");
+export const cameraStateAtom = atom<"play" | "edit">("play");
 
 export const spinnerStateAtom = atom<"idle" | "running" | "result">("idle");

@@ -5,6 +5,7 @@ import Camera from "./Camera";
 import ItemList from "./ItemList";
 import Light from "./Light";
 import { SoftShadows } from "@react-three/drei";
+import MobileButtons from "./MobileButtons";
 
 interface RouletteProps {}
 
@@ -20,6 +21,7 @@ const Roulette: FC<RouletteProps> = ({}) => {
         <Camera />
       </Canvas>
       <ItemList />
+      <MobileButtons />
     </>
   );
 };
