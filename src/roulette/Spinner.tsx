@@ -6,7 +6,7 @@ import { entryListAtom, modeAtom, targetItemAtom } from "./states";
 import Button from "./Button";
 import Disk from "./Disk";
 import { useSpinner } from "./useSpinner";
-import { Text } from "@react-three/drei";
+import { RoundedBox, Text } from "@react-three/drei";
 
 export default function Spinner() {
   const items = useAtomValue(entryListAtom);
@@ -38,27 +38,12 @@ export default function Spinner() {
 
   return (
     <group position={[0, 0, -1]}>
-      <mesh receiveShadow position={[0, 0, 0]}>
-        <boxGeometry args={[7, 0.1, 2]} />
-        <meshStandardMaterial
-          roughness={1}
-          transparent
-          opacity={0.6}
-          color="#D6DBE0"
-        />
-      </mesh>
-      <Button
-        position={[0.28, 0.1, 0.7]}
-        color="#FF80A9"
-        hoverColor="#e3e3e3"
-        onClick={handleStart}
-      />
-      <Button
-        position={[-0.28, 0.1, 0.7]}
-        color="#8E59FF"
-        hoverColor="#a47ff6"
-        onClick={switchMode}
-      />
+      <RoundedBox args={[7, 0.6, 2]} position={[0, -0.3, 0]} receiveShadow>
+        <meshStandardMaterial roughness={1} opacity={1} color="#D6DBE0" />
+      </RoundedBox>
+      <RoundedBox args={[7, 10, 2]} position={[0, 1.5, -1.5]}>
+        <meshStandardMaterial roughness={1} opacity={1} color="#D6DBE0" />
+      </RoundedBox>
 
       <group
         ref={spinnerRef}
@@ -67,15 +52,29 @@ export default function Spinner() {
       >
         <Disk items={items} />
       </group>
+
+      <Button
+        position={[0.28, 0, 0.7]}
+        color="#FF80A9"
+        hoverColor="#e3e3e3"
+        onClick={handleStart}
+      />
+      <Button
+        position={[-0.28, 0, 0.7]}
+        color="#8E59FF"
+        hoverColor="#a47ff6"
+        onClick={switchMode}
+      />
+
       <Text
         castShadow
         receiveShadow
         font="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff"
         color="black"
         rotation={[0, 0, 0]}
-        position={[3, 0.5, 0]}
+        position={[0, 5.5, 0.3]}
         fontSize={0.3}
-        anchorX="left"
+        anchorX="center"
         anchorY="middle"
       >
         {targetItem?.content}

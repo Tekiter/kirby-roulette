@@ -30,9 +30,8 @@ const Button: FC<ButtonProps> = ({ position, color, hoverColor, onClick }) => {
       onPointerDown={() => setPressed(true)}
       onPointerUp={() => setPressed(false)}
     >
-      <mesh castShadow>
+      <mesh castShadow position={[0, 0.025, 0]}>
         <cylinderGeometry args={[0.23, 0.23, 0.05]} />
-
         <motion.meshStandardMaterial
           animate={{ color: hovered ? hoverColor : color }}
         />
@@ -40,8 +39,8 @@ const Button: FC<ButtonProps> = ({ position, color, hoverColor, onClick }) => {
       <motion.mesh
         castShadow
         receiveShadow
-        position={[0, 0.05, 0]}
-        animate={{ y: pressed ? 0.03 : 0.05 }}
+        position={[0, 0.075, 0]}
+        animate={{ y: pressed ? 0.055 : 0.075 }}
       >
         <cylinderGeometry args={[0.18, 0.2, 0.04]} />
         <motion.meshStandardMaterial

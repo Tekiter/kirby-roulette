@@ -4,6 +4,7 @@ import Spinner from "./Spinner";
 import Camera from "./Camera";
 import ItemList from "./ItemList";
 import Light from "./Light";
+import { OrbitControls } from "@react-three/drei";
 
 interface RouletteProps {}
 
@@ -16,6 +17,7 @@ const Roulette: FC<RouletteProps> = ({}) => {
 
         <Spinner />
         <Camera />
+        <OrbitControls />
       </Canvas>
       <ItemList />
     </>

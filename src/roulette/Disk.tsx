@@ -21,7 +21,7 @@ const Disk: FC<DiskProps> = ({ items }) => {
   return (
     <>
       <mesh castShadow receiveShadow position={[0, -0.4, 0]}>
-        <cylinderGeometry args={[2.77, 2.7, 0.5, 64]} />
+        <cylinderGeometry args={[2.7, 2.7, 0.5, 64]} />
         <meshStandardMaterial roughness={1} color="#E6E5ED" />
       </mesh>
       {items.map((item, idx) => {
