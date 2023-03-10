@@ -2,6 +2,7 @@ import { Text } from "@react-three/drei";
 import { FC, useEffect } from "react";
 import { motion } from "framer-motion-3d";
 import { animate, useMotionValue } from "framer-motion";
+import { FONT } from "./const";
 
 interface ResultProps {
   content: string | null;
@@ -32,7 +33,7 @@ const ResultBoard: FC<ResultProps> = ({ content, position }) => {
       <Text
         castShadow
         receiveShadow
-        font="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff"
+        font={FONT}
         color="black"
         rotation={[0, 0, 0]}
         position={[0, 0.3, 0.06]}

@@ -1,6 +1,7 @@
 import { Text } from "@react-three/drei";
 import { FC } from "react";
 import { motion } from "framer-motion-3d";
+import { FONT } from "./const";
 
 interface DiskProps {
   items: { key: string; content: string }[];
@@ -57,7 +58,7 @@ const Disk: FC<DiskProps> = ({ items }) => {
               maxWidth={Math.min(angle * 1.5, 2)}
               lineHeight={1}
               overflowWrap={"break-word"}
-              font="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/CookieRun-Regular.woff"
+              font={FONT}
               color="#fefefe"
               rotation={[-Math.PI / 2, 0, angle / 2 + Math.PI]}
               position={[
