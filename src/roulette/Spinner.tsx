@@ -8,7 +8,7 @@ import {
   targetItemAtom,
   spinnerStateAtom,
 } from "./states";
-import Button from "./Button";
+import StartButton from "./StartButton";
 import Disk from "./Disk";
 import { useSpinner } from "./useSpinner";
 import ResultBoard from "./ResultBoard";
@@ -64,7 +64,7 @@ export default function Spinner() {
         <meshStandardMaterial color="#EC3843" />
       </mesh>
 
-      <Button
+      <StartButton
         position={[0, 0, 0.7]}
         color="#FF80A9"
         hoverColor="#ffa4c1"

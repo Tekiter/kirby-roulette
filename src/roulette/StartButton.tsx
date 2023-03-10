@@ -9,7 +9,12 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const Button: FC<ButtonProps> = ({ position, color, hoverColor, onClick }) => {
+const StartButton: FC<ButtonProps> = ({
+  position,
+  color,
+  hoverColor,
+  onClick,
+}) => {
   const [hovered, setHovered] = useState(false);
   const [pressed, setPressed] = useState(false);
 
@@ -36,20 +41,17 @@ const Button: FC<ButtonProps> = ({ position, color, hoverColor, onClick }) => {
         position={[0, 0.075, 0]}
         animate={{ y: pressed ? 0.055 : 0.075 }}
       >
-        <cylinderGeometry args={[0.18, 0.2, 0.04]} />
+        <cylinderGeometry args={[0.32, 0.35, 0.04]} />
         <motion.meshStandardMaterial
           animate={{ color: hovered ? hoverColor : color }}
         />
       </motion.mesh>
       <mesh castShadow position={[0, 0.025, 0]}>
-        <cylinderGeometry args={[0.23, 0.23, 0.05]} />
-        <motion.meshStandardMaterial
-          // animate={{ color: hovered ? hoverColor : color }}
-          color="#6d6d6d"
-        />
+        <cylinderGeometry args={[0.4, 0.4, 0.05]} />
+        <motion.meshStandardMaterial color="#6d6d6d" />
       </mesh>
     </group>
   );
 };
 
-export default Button;
+export default StartButton;
