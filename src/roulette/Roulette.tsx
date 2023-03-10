@@ -6,7 +6,6 @@ import ItemList from "./ItemList";
 import Light from "./Light";
 import { OrbitControls, SoftShadows } from "@react-three/drei";
 import MobileButtons from "./MobileButtons";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 interface RouletteProps {}
 
@@ -22,10 +21,6 @@ const Roulette: FC<RouletteProps> = ({}) => {
         <Camera />
 
         {import.meta.env.DEV && <OrbitControls />}
-
-        <EffectComposer>
-          <Bloom luminanceThreshold={1} intensity={2} levels={9} mipmapBlur />
-        </EffectComposer>
       </Canvas>
       <ItemList />
       <MobileButtons />
