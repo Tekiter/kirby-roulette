@@ -6,18 +6,6 @@ interface DiskProps {
   items: { key: string; content: string }[];
 }
 
-// const colors: string[] = [
-//   "#3843D0",
-//   "#FFAF5A",
-//   "#4AD1AC",
-//   "#FD5860",
-//   "#63E2FB",
-//   "#FF8C76",
-//   "#EC3843",
-//   "#6D6EF0",
-//   "#1A9A7C",
-// ];
-
 const colors: string[] = [
   "#3843D0",
   "#d48530",
@@ -63,12 +51,7 @@ const Disk: FC<DiskProps> = ({ items }) => {
                   (2 * Math.PI) / items.length,
                 ]}
               />
-              <meshStandardMaterial
-                roughness={1}
-                transparent
-                opacity={1}
-                color={colors[idx % colors.length]}
-              />
+              <meshPhongMaterial color={colors[idx % colors.length]} />
             </mesh>
             <Text
               maxWidth={Math.min(angle * 1.5, 2)}
