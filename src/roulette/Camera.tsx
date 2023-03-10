@@ -27,7 +27,7 @@ const Camera: FC<CameraProps> = ({}) => {
       cameraPos.set(-4.5, 4.5, 3.5);
       targetLookAtPos.set(-1, 3.5, 0);
     } else if (mode === "play") {
-      cameraPos.set(0, 2.7, 6);
+      cameraPos.set(0, 3.6, 7);
       targetLookAtPos.set(0, 2.7, 0);
     }
   }, [mode]);
