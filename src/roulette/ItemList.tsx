@@ -1,7 +1,7 @@
-import { useAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
 import { nanoid } from "nanoid";
 import { FC, KeyboardEvent, useRef, useState } from "react";
-import { entryListAtom, cameraStateAtom } from "./states";
+import { entryListAtom, cameraStateAtom, spinnerStateAtom } from "./states";
 import { AnimatePresence, motion } from "framer-motion";
 import { Cross2Icon, PlusIcon, TrashIcon } from "@radix-ui/react-icons";
 
@@ -10,6 +10,7 @@ interface ItemListProps {}
 const ItemList: FC<ItemListProps> = ({}) => {
   const [itemList, setItemList] = useAtom(entryListAtom);
   const [mode, setMode] = useAtom(cameraStateAtom);
+  const setSpinnerState = useSetAtom(spinnerStateAtom);
 
   const textRef = useRef<HTMLInputElement>(null);
   const [text, setText] = useState("");
@@ -30,10 +31,12 @@ const ItemList: FC<ItemListProps> = ({}) => {
     }
     setItemList((list) => [...list, { key: nanoid(), content: text }]);
     setText("");
+    setSpinnerState("idle");
   }
 
   function handleDelete(key: string) {
     setItemList((items) => items.filter((item) => item.key !== key));
+    setSpinnerState("idle");
   }
 
   function handleClose() {
