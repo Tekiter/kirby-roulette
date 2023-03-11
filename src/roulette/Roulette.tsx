@@ -20,7 +20,15 @@ const Roulette: FC<RouletteProps> = ({}) => {
         <Spinner />
         <Camera />
 
-        {import.meta.env.DEV && <OrbitControls />}
+        <OrbitControls
+          makeDefault
+          minAzimuthAngle={-Math.PI / 3}
+          maxAzimuthAngle={Math.PI / 4}
+          minPolarAngle={Math.PI / 4}
+          maxPolarAngle={Math.PI / 2}
+          minDistance={4}
+          maxDistance={10}
+        />
       </Canvas>
       <ItemList />
       <MobileButtons />

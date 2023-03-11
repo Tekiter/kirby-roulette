@@ -21,11 +21,11 @@ export const useSpinner = () => {
 
     const lastAngle: number = value.get();
 
-    value.jump(lastAngle - Math.PI * 2 * 5);
+    value.jump(lastAngle - Math.PI * 2 * 10);
 
     animate(value, newAngle, {
       type: "tween",
-      duration: 5,
+      duration: 8,
       ease: [0.3, 0.99, 0.34, 1],
     });
 

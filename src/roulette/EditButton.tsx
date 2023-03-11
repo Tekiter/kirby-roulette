@@ -12,12 +12,16 @@ const basic = new MeshBasicMaterial({ color: "#141414" });
 
 const EditButton: FC<EditButtonProps> = ({ position }) => {
   const [hover, setHover] = useState(false);
-  const [, setCameraState] = useAtom(cameraStateAtom);
+  const [cameraState, setCameraState] = useAtom(cameraStateAtom);
 
   useCursor(hover);
 
   function handleClick() {
-    setCameraState("edit");
+    if (cameraState === "play") {
+      setCameraState("edit");
+    } else if (cameraState === "edit") {
+      setCameraState("play");
+    }
   }
 
   return (
