@@ -38,7 +38,7 @@ const ResultBoard: FC<ResultProps> = ({ content, position }) => {
           distortion={0}
           distortionScale={0.5}
           temporalDistortion={0}
-          color={"#555555"}
+          color={"#242424"}
         />
       </mesh>
       <Text
