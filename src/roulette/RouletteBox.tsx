@@ -1,5 +1,12 @@
-import { Center, RoundedBox, Svg, Text } from "@react-three/drei";
-import { FC } from "react";
+import {
+  Center,
+  Plane,
+  RoundedBox,
+  Svg,
+  Text,
+  useCursor,
+} from "@react-three/drei";
+import { FC, useState } from "react";
 import { MeshBasicMaterial } from "three";
 import { FONT } from "./const";
 
@@ -8,6 +15,14 @@ interface RouletteBoxProps {}
 const basic = new MeshBasicMaterial({ color: "#7c7c7c" });
 
 const RouletteBox: FC<RouletteBoxProps> = ({}) => {
+  const [isHoverLink, setIsHoverLink] = useState(false);
+
+  useCursor(isHoverLink);
+
+  function handleClickGithub() {
+    window.open("https://github.com/Tekiter/kirby-roulette");
+  }
+
   return (
     <group>
       <RoundedBox args={[7, 0.6, 2.5]} position={[0, -0.3, 0.25]} receiveShadow>
@@ -16,22 +31,35 @@ const RouletteBox: FC<RouletteBoxProps> = ({}) => {
       <RoundedBox args={[7, 10, 2]} position={[0, 1, -1.5]} receiveShadow>
         <meshStandardMaterial roughness={1} opacity={1} color="#D6DBE0" />
       </RoundedBox>
-      <Center position={[-3.2, -0.28, 1.501]}>
-        <Svg src={githubIconSvg} scale={0.013} fillMaterial={basic} />
-      </Center>
-      <Text
-        castShadow
-        receiveShadow
-        font={FONT}
-        color="#7c7c7c"
-        rotation={[0, 0, 0]}
-        position={[-3.02, -0.28, 1.501]}
-        fontSize={0.15}
-        anchorX="left"
-        anchorY="middle"
+      <group
+        position={[-3, -0.28, 1.501]}
+        onClick={handleClickGithub}
+        onPointerOver={() => setIsHoverLink(true)}
+        onPointerOut={() => setIsHoverLink(false)}
+        onPointerLeave={() => setIsHoverLink(false)}
       >
-        Kirby Roulette
-      </Text>
+        <Center right position={[-0.4, 0, 0]}>
+          <Plane args={[1.5, 0.4]}>
+            <meshStandardMaterial color="#D6DBE0" />
+          </Plane>
+        </Center>
+        <Center position={[-0.2, 0, 0.01]}>
+          <Svg src={githubIconSvg} scale={0.013} fillMaterial={basic} />
+        </Center>
+        <Text
+          castShadow
+          receiveShadow
+          font={FONT}
+          color="#7c7c7c"
+          rotation={[0, 0, 0]}
+          position={[-0.02, 0, 0.01]}
+          fontSize={0.15}
+          anchorX="left"
+          anchorY="middle"
+        >
+          Kirby Roulette
+        </Text>
+      </group>
     </group>
   );
 };

@@ -43,6 +43,7 @@ const StartButton: FC<ButtonProps> = ({
       >
         <cylinderGeometry args={[0.32, 0.35, 0.04]} />
         <motion.meshStandardMaterial
+          initial={{ color: color }}
           animate={{ color: hovered ? hoverColor : color }}
         />
       </motion.mesh>
