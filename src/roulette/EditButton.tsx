@@ -3,6 +3,7 @@ import { useAtom } from "jotai";
 import { FC, useState } from "react";
 import { MeshBasicMaterial } from "three";
 import { cameraStateAtom } from "./states";
+import { motion } from "framer-motion-3d";
 
 interface EditButtonProps {
   position: [number, number, number];
@@ -25,20 +26,28 @@ const EditButton: FC<EditButtonProps> = ({ position }) => {
   }
 
   return (
-    <group
+    <motion.group
       position={position}
       onPointerOver={() => setHover(true)}
       onPointerLeave={() => setHover(false)}
       onClick={handleClick}
     >
-      <mesh position={[0, 0, 0.05]}>
+      <motion.mesh
+        position={[0, 0, 0.05]}
+        whileTap={{
+          z: -0.005,
+        }}
+      >
         <boxGeometry args={[0.4, 0.4, 0.1]} />
-        <meshStandardMaterial color="#f2f2f2" />
-      </mesh>
+        <motion.meshStandardMaterial
+          color="#f2f2f2"
+          animate={hover ? { color: "#e7e7e7" } : { color: "#f9eded" }}
+        />
+      </motion.mesh>
       <Center position={[0, 0, 0.11]}>
         <Svg src={penSvg} scale={0.017} fillMaterial={basic} />
       </Center>
-    </group>
+    </motion.group>
   );
 };
 
