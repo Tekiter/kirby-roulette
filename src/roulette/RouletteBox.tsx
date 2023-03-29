@@ -7,7 +7,7 @@ import {
   useCursor,
 } from "@react-three/drei";
 import { FC, useState } from "react";
-import { MeshBasicMaterial } from "three";
+import { Event, MeshBasicMaterial } from "three";
 import { FONT } from "./const";
 
 interface RouletteBoxProps {}
@@ -19,7 +19,8 @@ const RouletteBox: FC<RouletteBoxProps> = ({}) => {
 
   useCursor(isHoverLink);
 
-  function handleClickGithub() {
+  function handleClickGithub(e: Event) {
+    e.preventDefault();
     window.open("https://github.com/Tekiter/kirby-roulette");
   }
 
