@@ -3,12 +3,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useAtom } from "jotai";
 import { FC } from "react";
 import { cameraStateAtom } from "./states";
+import useEventLogger from "../eventLogger/useEventLogger";
 
 const MobileButtons: FC = () => {
   const [cameraState, setCameraState] = useAtom(cameraStateAtom);
+  const { logEvent } = useEventLogger();
 
   function handleEdit() {
     setCameraState("edit");
+    logEvent("Action-SpinRoulette", {});
   }
 
   return (
