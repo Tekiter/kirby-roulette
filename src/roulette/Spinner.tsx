@@ -14,8 +14,10 @@ import { useSpinner } from "./useSpinner";
 import ResultBoard from "./ResultBoard";
 import RouletteBox from "./RouletteBox";
 import EditButton from "./EditButton";
+import useEventLogger from "../eventLogger/useEventLogger";
 
 export default function Spinner() {
+  const { logEvent } = useEventLogger();
   const items = useAtomValue(entryListAtom);
   const spinnerRef = useRef<Group>(null);
   const { angleMotionValue, start } = useSpinner();
@@ -29,22 +31,14 @@ export default function Spinner() {
     }
   });
 
-  function switchMode() {
-    setMode((prev) => {
-      if (prev === "play") {
-        return "edit";
-      } else {
-        return "play";
-      }
-    });
-  }
-
   function handleStart() {
     if (spinnerState === "running") {
       return;
     }
     start();
     setMode("play");
+    console.log("RUN");
+    logEvent("Action-SpinRoulette", {});
   }
 
   return (

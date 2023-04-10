@@ -4,6 +4,7 @@ import { FC, useState } from "react";
 import { MeshBasicMaterial } from "three";
 import { cameraStateAtom } from "./states";
 import { motion } from "framer-motion-3d";
+import useEventLogger from "../eventLogger/useEventLogger";
 
 interface EditButtonProps {
   position: [number, number, number];
@@ -12,6 +13,7 @@ interface EditButtonProps {
 const basic = new MeshBasicMaterial({ color: "#141414" });
 
 const EditButton: FC<EditButtonProps> = ({ position }) => {
+  const { logEvent } = useEventLogger();
   const [hover, setHover] = useState(false);
   const [cameraState, setCameraState] = useAtom(cameraStateAtom);
 
@@ -20,6 +22,7 @@ const EditButton: FC<EditButtonProps> = ({ position }) => {
   function handleClick() {
     if (cameraState === "play") {
       setCameraState("edit");
+      logEvent("Action-EditMode", {});
     } else if (cameraState === "edit") {
       setCameraState("play");
     }

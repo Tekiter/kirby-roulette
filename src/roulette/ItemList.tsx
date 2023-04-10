@@ -4,10 +4,12 @@ import { FC, KeyboardEvent, useRef, useState } from "react";
 import { entryListAtom, cameraStateAtom, spinnerStateAtom } from "./states";
 import { AnimatePresence, motion } from "framer-motion";
 import { Cross2Icon, PlusIcon, TrashIcon } from "@radix-ui/react-icons";
+import useEventLogger from "../eventLogger/useEventLogger";
 
 interface ItemListProps {}
 
 const ItemList: FC<ItemListProps> = ({}) => {
+  const { logEvent } = useEventLogger();
   const [itemList, setItemList] = useAtom(entryListAtom);
   const [mode, setMode] = useAtom(cameraStateAtom);
   const setSpinnerState = useSetAtom(spinnerStateAtom);
@@ -32,11 +34,19 @@ const ItemList: FC<ItemListProps> = ({}) => {
     setItemList((list) => [...list, { key: nanoid(), content: text }]);
     setText("");
     setSpinnerState("idle");
+
+    logEvent("Action-AddItem", {
+      length: itemList.length + 1,
+    });
   }
 
   function handleDelete(key: string) {
     setItemList((items) => items.filter((item) => item.key !== key));
     setSpinnerState("idle");
+
+    logEvent("Action-RemoveItem", {
+      length: itemList.length - 1,
+    });
   }
 
   function handleClose() {
