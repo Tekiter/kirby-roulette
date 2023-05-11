@@ -9,7 +9,7 @@ import MobileButtons from "./MobileButtons";
 
 interface RouletteProps {}
 
-const Roulette: FC<RouletteProps> = ({}) => {
+const RouletteCanvas: FC<RouletteProps> = ({}) => {
   return (
     <>
       <Canvas dpr={[1, 2]} camera={{ fov: 60, position: [100, 90, 0] }} shadows>
@@ -36,4 +36,4 @@ const Roulette: FC<RouletteProps> = ({}) => {
   );
 };
 
-export default Roulette;
+export default RouletteCanvas;

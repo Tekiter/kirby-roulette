@@ -1,11 +1,14 @@
+import { Suspense } from "react";
 import AmplitudeProvider from "./eventLogger/AmplitudeProvider";
-import Roulette from "./roulette/Roulette";
+import Canvas from "./roulette/RouletteCanvas";
 
 function App() {
   return (
     <AmplitudeProvider apiKey={import.meta.env.VITE_AMPLITUDE_API_KEY}>
-      <div className="h-screen">
-        <Roulette />
+      <div className="absolute inset-0">
+        <Suspense fallback={<p>Loading...</p>}>
+          <Canvas />
+        </Suspense>
       </div>
     </AmplitudeProvider>
   );
