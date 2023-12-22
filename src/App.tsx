@@ -7,15 +7,13 @@ import MobileButtons from "./roulette/MobileButtons";
 function App() {
   return (
     <AmplitudeProvider apiKey={import.meta.env.VITE_AMPLITUDE_API_KEY}>
-      <div className="absolute inset-0">
-        <div className="relative h-full">
-          <Suspense fallback={<p>Loading...</p>}>
-            <Canvas />
-          </Suspense>
+      <div className="h-full">
+        <Suspense fallback={<p>Loading...</p>}>
+          <Canvas />
+        </Suspense>
 
-          <ItemList />
-          <MobileButtons />
-        </div>
+        <ItemList />
+        <MobileButtons />
       </div>
     </AmplitudeProvider>
   );

@@ -20,7 +20,6 @@ const RouletteBox: FC<RouletteBoxProps> = ({}) => {
   useCursor(isHoverLink);
 
   function handleClickGithub(e: Event) {
-    e.preventDefault();
     window.open("https://github.com/Tekiter/kirby-roulette");
   }
 

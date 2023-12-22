@@ -8,3 +8,14 @@
     font-weight: normal;
     font-style: normal;
 }
+
+
+#root {
+    height: 100vh;    
+}
+
+@supports (height: 100dvh) {
+    #root {
+        height: 100dvh;
+    }
+}
