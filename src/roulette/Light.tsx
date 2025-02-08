@@ -1,4 +1,4 @@
-import { Environment, Lightformer } from "@react-three/drei";
+import { Box, Environment, Lightformer } from "@react-three/drei";
 
 export default function Light() {
   return (
@@ -11,14 +11,25 @@ export default function Light() {
         color="#fefefe"
       />
       <Environment resolution={32}>
-        <Lightformer position={[10, 10, 10]} scale={10} intensity={4} />
+        <Box args={[1, 1, 1]} position={[10, 10, 10]} />
+        <Lightformer
+          position={[10, 10, 10]}
+          scale={10}
+          intensity={10}
+          color="white"
+        />
         <Lightformer
           position={[10, 0, -10]}
           scale={10}
-          color="red"
           intensity={6}
+          color="red"
         />
-        <Lightformer position={[-10, -10, -10]} scale={10} intensity={4} />
+        <Lightformer
+          position={[-10, -10, -10]}
+          scale={10}
+          intensity={4}
+          color="white"
+        />
       </Environment>
     </>
   );
