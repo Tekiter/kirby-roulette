@@ -12,7 +12,7 @@ import { FONT } from "./const";
 
 interface RouletteBoxProps {}
 
-const githubIconMeterial = new MeshBasicMaterial({ color: "#999999" });
+const githubIconMeterial = new MeshBasicMaterial({ color: "#747474" });
 
 const bodyMaterial = new MeshStandardMaterial({
   color: "#c7b8ce",
