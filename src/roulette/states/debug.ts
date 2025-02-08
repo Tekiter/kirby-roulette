@@ -2,8 +2,4 @@ import { atomWithStorage, createJSONStorage } from "jotai/utils";
 
 const storage = createJSONStorage<boolean>(() => window.sessionStorage);
 
-export const isDebugCameraAtom = atomWithStorage(
-  "is-debug-camera",
-  false,
-  storage
-);
+export const isDebugAtom = atomWithStorage("is-debug", false, storage);

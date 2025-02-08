@@ -3,12 +3,12 @@ import { useAtomValue } from "jotai";
 import { FC, useEffect, useMemo } from "react";
 import { Vector3 } from "three";
 import { cameraStateAtom } from "./states";
-import { isDebugCameraAtom } from "./states/debug";
+import { isDebugAtom } from "./states/debug";
 
 interface CameraProps {}
 
 const Camera: FC<CameraProps> = ({}) => {
-  const isDebug = useAtomValue(isDebugCameraAtom);
+  const isDebug = useAtomValue(isDebugAtom);
   const mode = useAtomValue(cameraStateAtom);
   const { camera } = useThree((camera) => camera);
 

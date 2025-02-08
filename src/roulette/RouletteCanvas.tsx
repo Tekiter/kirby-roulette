@@ -5,12 +5,12 @@ import Camera from "./Camera";
 import Light from "./Light";
 import { OrbitControls, SoftShadows } from "@react-three/drei";
 import { useAtom } from "jotai";
-import { isDebugCameraAtom } from "./states/debug";
+import { isDebugAtom } from "./states/debug";
 
 interface RouletteProps {}
 
 const RouletteCanvas: FC<RouletteProps> = ({}) => {
-  const [isDebugCamera, setIsDebugCamera] = useAtom(isDebugCameraAtom);
+  const [isDebug, setIsDebug] = useAtom(isDebugAtom);
 
   return (
     <>
@@ -29,7 +29,7 @@ const RouletteCanvas: FC<RouletteProps> = ({}) => {
 
           <OrbitControls
             makeDefault
-            {...(isDebugCamera
+            {...(isDebug
               ? {}
               : {
                   minAzimuthAngle: -Math.PI / 3,
@@ -46,11 +46,11 @@ const RouletteCanvas: FC<RouletteProps> = ({}) => {
         <button
           className="absolute left-0 bottom-0"
           onClick={() => {
-            setIsDebugCamera((debug) => !debug);
+            setIsDebug((debug) => !debug);
             location.reload();
           }}
         >
-          Camera {isDebugCamera ? "Free" : "Normal"}
+          DEBUG {isDebug ? "ON" : "OFF"}
         </button>
       ) : null}
     </>
