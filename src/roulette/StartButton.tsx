@@ -1,6 +1,8 @@
 import { useCursor } from "@react-three/drei";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { motion } from "framer-motion-3d";
+import { usePreservedCallback } from "../utils/usePreservedCallback";
+import { noop } from "es-toolkit";
 
 interface ButtonProps {
   position?: [number, number, number];
@@ -19,6 +21,27 @@ const StartButton: FC<ButtonProps> = ({
   const [pressed, setPressed] = useState(false);
 
   useCursor(hovered, "pointer", "auto");
+
+  const preservedOnClick = usePreservedCallback(onClick ?? noop);
+
+  useEffect(() => {
+    const keydown = (e: KeyboardEvent) => {
+      if (e.key === " ") {
+        preservedOnClick();
+      }
+
+      setPressed(true);
+      document.addEventListener("keyup", () => setPressed(false), {
+        once: true,
+      });
+    };
+
+    document.addEventListener("keydown", keydown);
+
+    return () => {
+      document.removeEventListener("keydown", keydown);
+    };
+  }, []);
 
   return (
     <group

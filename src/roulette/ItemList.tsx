@@ -1,10 +1,17 @@
 import { useAtom, useSetAtom } from "jotai";
 import { nanoid } from "nanoid";
-import { FC, KeyboardEvent, useRef, useState } from "react";
+import {
+  FC,
+  KeyboardEvent as ReactKeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { entryListAtom, cameraStateAtom, spinnerStateAtom } from "./states";
 import { AnimatePresence, motion } from "framer-motion";
 import { Cross2Icon, PlusIcon, TrashIcon } from "@radix-ui/react-icons";
 import useEventLogger from "../eventLogger/useEventLogger";
+import { usePreservedCallback } from "../utils/usePreservedCallback";
 
 interface ItemListProps {}
 
@@ -17,7 +24,7 @@ const ItemList: FC<ItemListProps> = ({}) => {
   const textRef = useRef<HTMLInputElement>(null);
   const [text, setText] = useState("");
 
-  function handleKeyDown(e: KeyboardEvent) {
+  function handleKeyDown(e: ReactKeyboardEvent) {
     if (e.nativeEvent.isComposing || e.keyCode === 229) {
       return;
     }
@@ -49,9 +56,23 @@ const ItemList: FC<ItemListProps> = ({}) => {
     });
   }
 
-  function handleClose() {
+  const handleClose = usePreservedCallback(() => {
     setMode("play");
-  }
+  });
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        handleClose();
+      }
+    };
+
+    window.addEventListener("keydown", handler);
+
+    return () => {
+      window.removeEventListener("keydown", handler);
+    };
+  }, []);
 
   return (
     <div className="absolute top-0 right-0 bottom-0 max-w-full overflow-hidden font-hand">

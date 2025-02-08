@@ -17,6 +17,7 @@
     "@react-three/drei": "^9.121.4",
     "@react-three/fiber": "^8.17.14",
     "clsx": "^2.1.1",
+    "es-toolkit": "^1.32.0",
     "framer-motion": "^10.1.0",
     "framer-motion-3d": "^10.1.0",
     "jotai": "^2.11.3",

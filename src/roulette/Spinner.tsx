@@ -15,6 +15,7 @@ import ResultBoard from "./ResultBoard";
 import RouletteBox from "./RouletteBox";
 import EditButton from "./EditButton";
 import useEventLogger from "../eventLogger/useEventLogger";
+import { usePreservedCallback } from "../utils/usePreservedCallback";
 
 export default function Spinner() {
   const { logEvent } = useEventLogger();
@@ -31,14 +32,14 @@ export default function Spinner() {
     }
   });
 
-  function handleStart() {
+  const handleStart = usePreservedCallback(() => {
     if (spinnerState === "running") {
       return;
     }
     start();
     setMode("play");
     logEvent("Action-SpinRoulette", {});
-  }
+  });
 
   return (
     <group position={[0, 0, -1]}>
