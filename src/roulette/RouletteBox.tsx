@@ -7,12 +7,18 @@ import {
   useCursor,
 } from "@react-three/drei";
 import { FC, useState } from "react";
-import { Event, MeshBasicMaterial } from "three";
+import { Event, MeshBasicMaterial, MeshStandardMaterial } from "three";
 import { FONT } from "./const";
 
 interface RouletteBoxProps {}
 
-const basic = new MeshBasicMaterial({ color: "#7c7c7c" });
+const githubIconMeterial = new MeshBasicMaterial({ color: "#999999" });
+
+const bodyMaterial = new MeshStandardMaterial({
+  color: "#c7b8ce",
+  opacity: 1,
+  roughness: 1,
+});
 
 const RouletteBox: FC<RouletteBoxProps> = ({}) => {
   const [isHoverLink, setIsHoverLink] = useState(false);
@@ -25,12 +31,22 @@ const RouletteBox: FC<RouletteBoxProps> = ({}) => {
 
   return (
     <group>
-      <RoundedBox args={[7, 0.6, 2.5]} position={[0, -0.3, 0.25]} receiveShadow>
-        <meshStandardMaterial roughness={1} opacity={1} color="#D6DBE0" />
-      </RoundedBox>
-      <RoundedBox args={[7, 10, 2]} position={[0, 1, -1.5]} receiveShadow>
-        <meshStandardMaterial roughness={1} opacity={1} color="#D6DBE0" />
-      </RoundedBox>
+      {/* main body */}
+      <RoundedBox
+        args={[7, 10, 2]}
+        position={[0, 1, -1.5]}
+        receiveShadow
+        material={bodyMaterial}
+      />
+
+      {/* panel in front of main body */}
+      <RoundedBox
+        args={[7, 0.6, 2.5]}
+        position={[0, -0.3, 0.25]}
+        receiveShadow
+        material={bodyMaterial}
+      />
+
       <group
         position={[-3, -0.28, 1.501]}
         onClick={handleClickGithub}
@@ -39,18 +55,20 @@ const RouletteBox: FC<RouletteBoxProps> = ({}) => {
         onPointerLeave={() => setIsHoverLink(false)}
       >
         <Center right position={[-0.4, 0, 0]}>
-          <Plane args={[1.5, 0.4]}>
-            <meshStandardMaterial color="#D6DBE0" />
-          </Plane>
+          <Plane args={[1.5, 0.4]} material={bodyMaterial} />
         </Center>
         <Center position={[-0.2, 0, 0.01]}>
-          <Svg src={githubIconSvg} scale={0.013} fillMaterial={basic} />
+          <Svg
+            src={githubIconSvg}
+            scale={0.013}
+            fillMaterial={githubIconMeterial}
+          />
         </Center>
         <Text
           castShadow
           receiveShadow
           font={FONT}
-          color="#7c7c7c"
+          color="#555555"
           rotation={[0, 0, 0]}
           position={[-0.02, 0, 0.01]}
           fontSize={0.15}

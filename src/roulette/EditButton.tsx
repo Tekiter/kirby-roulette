@@ -43,8 +43,8 @@ const EditButton: FC<EditButtonProps> = ({ position }) => {
       >
         <boxGeometry args={[0.4, 0.4, 0.1]} />
         <motion.meshStandardMaterial
-          color="#e9e0d0"
-          animate={hover ? { color: "#fdc6ff" } : { color: "#ebe7e0" }}
+          color="#ccc7bf"
+          animate={hover ? { color: "#fdc6ff" } : { color: "#ccc7bf" }}
         />
       </motion.mesh>
       <Center position={[0, 0, 0.11]}>

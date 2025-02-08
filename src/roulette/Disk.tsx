@@ -28,7 +28,7 @@ const Disk: FC<DiskProps> = ({ items }) => {
         <cylinderGeometry
           args={[DISK_RADIUS + 0.2, DISK_RADIUS + 0.2, 0.2, 64]}
         />
-        <meshStandardMaterial roughness={1} color="#E6E5ED" />
+        <meshStandardMaterial roughness={1} color="#d1c6d8" />
       </mesh>
       {items.map((item, idx) => {
         const angle = (2 * Math.PI) / items.length;
