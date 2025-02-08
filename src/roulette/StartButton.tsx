@@ -28,12 +28,12 @@ const StartButton: FC<ButtonProps> = ({
     const keydown = (e: KeyboardEvent) => {
       if (e.key === " ") {
         preservedOnClick();
-      }
 
-      setPressed(true);
-      document.addEventListener("keyup", () => setPressed(false), {
-        once: true,
-      });
+        setPressed(true);
+        document.addEventListener("keyup", () => setPressed(false), {
+          once: true,
+        });
+      }
     };
 
     document.addEventListener("keydown", keydown);
