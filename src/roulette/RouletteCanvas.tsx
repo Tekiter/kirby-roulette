@@ -20,7 +20,6 @@ const RouletteCanvas: FC<RouletteProps> = ({}) => {
           camera={{ fov: 60, position: [100, 90, 0] }}
           shadows
         >
-          <color attach="background" args={["#e0b7ff"]} />
           <SoftShadows />
           <Light />
 

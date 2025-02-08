@@ -1,5 +1,5 @@
 import { Text } from "@react-three/drei";
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import { motion } from "framer-motion-3d";
 import { FONT } from "./const";
 
@@ -54,25 +54,27 @@ const Disk: FC<DiskProps> = ({ items }) => {
               />
               <meshPhongMaterial color={colors[idx % colors.length]} />
             </mesh>
-            <Text
-              maxWidth={Math.min(angle * 1.5, 2)}
-              lineHeight={1}
-              overflowWrap={"break-word"}
-              font={FONT}
-              color="#fefefe"
-              rotation={[-Math.PI / 2, 0, angle / 2 + Math.PI]}
-              position={[
-                2 * Math.sin(angle / 2),
-                0.155,
-                2 * Math.cos(angle / 2),
-              ]}
-              fontSize={0.185}
-              anchorX="center"
-              anchorY="middle"
-              textAlign="center"
-            >
-              {item.content}
-            </Text>
+            <Suspense>
+              <Text
+                maxWidth={Math.min(angle * 1.5, 2)}
+                lineHeight={1}
+                overflowWrap={"break-word"}
+                font={FONT}
+                color="#fefefe"
+                rotation={[-Math.PI / 2, 0, angle / 2 + Math.PI]}
+                position={[
+                  2 * Math.sin(angle / 2),
+                  0.155,
+                  2 * Math.cos(angle / 2),
+                ]}
+                fontSize={0.185}
+                anchorX="center"
+                anchorY="middle"
+                textAlign="center"
+              >
+                {item.content}
+              </Text>
+            </Suspense>
             <mesh position={[0, 0, DISK_RADIUS - 0.01]} castShadow>
               <capsuleGeometry args={[0.03, 0.2]} />
               <meshStandardMaterial color="#acacac" />

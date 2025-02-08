@@ -1,5 +1,5 @@
 import { MeshTransmissionMaterial, Text } from "@react-three/drei";
-import { FC, useEffect } from "react";
+import { FC, Suspense, useEffect } from "react";
 import { motion } from "framer-motion-3d";
 import { animate, useMotionValue } from "framer-motion";
 import { FONT } from "./const";
@@ -41,19 +41,21 @@ const ResultBoard: FC<ResultProps> = ({ content, position }) => {
           color={"#242424"}
         />
       </mesh>
-      <Text
-        castShadow
-        receiveShadow
-        font={FONT}
-        color="#ffffff"
-        rotation={[0, 0, 0]}
-        position={[0, 0.3, 0.06]}
-        fontSize={0.3}
-        anchorX="center"
-        anchorY="middle"
-      >
-        {content}
-      </Text>
+      <Suspense>
+        <Text
+          castShadow
+          receiveShadow
+          font={FONT}
+          color="#ffffff"
+          rotation={[0, 0, 0]}
+          position={[0, 0.3, 0.06]}
+          fontSize={0.3}
+          anchorX="center"
+          anchorY="middle"
+        >
+          {content}
+        </Text>
+      </Suspense>
     </motion.group>
   );
 };

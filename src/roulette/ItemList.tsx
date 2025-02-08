@@ -87,7 +87,7 @@ const ItemList: FC<ItemListProps> = ({}) => {
               duration: 0.5,
             }}
           >
-            <div className="h-full max-w-full w-80 flex flex-col backdrop-blur-md bg-white/30 rounded border border-slate-200">
+            <div className="h-full max-w-full w-80 flex flex-col backdrop-blur-md bg-white/60 rounded border border-slate-200">
               <div className="flex">
                 <h1 className="text-lg pt-3 pl-3 grow">Edit Item</h1>
                 <button

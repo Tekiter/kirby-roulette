@@ -6,7 +6,7 @@ import {
   Text,
   useCursor,
 } from "@react-three/drei";
-import { FC, useState } from "react";
+import { FC, Suspense, useState } from "react";
 import { Event, MeshBasicMaterial, MeshStandardMaterial } from "three";
 import { FONT } from "./const";
 
@@ -64,19 +64,21 @@ const RouletteBox: FC<RouletteBoxProps> = ({}) => {
             fillMaterial={githubIconMeterial}
           />
         </Center>
-        <Text
-          castShadow
-          receiveShadow
-          font={FONT}
-          color="#555555"
-          rotation={[0, 0, 0]}
-          position={[-0.02, 0, 0.01]}
-          fontSize={0.15}
-          anchorX="left"
-          anchorY="middle"
-        >
-          Kirby Roulette
-        </Text>
+        <Suspense>
+          <Text
+            castShadow
+            receiveShadow
+            font={FONT}
+            color="#555555"
+            rotation={[0, 0, 0]}
+            position={[-0.02, 0, 0.01]}
+            fontSize={0.15}
+            anchorX="left"
+            anchorY="middle"
+          >
+            Kirby Roulette
+          </Text>
+        </Suspense>
       </group>
     </group>
   );
