@@ -1,6 +1,6 @@
 import { useFrame, useThree } from "@react-three/fiber";
 import { useAtomValue } from "jotai";
-import { FC, useEffect, useMemo } from "react";
+import { FC, useEffect, useState } from "react";
 import { Vector3 } from "three";
 
 import { isDebugAtom } from "./states/debug";
@@ -13,9 +13,9 @@ const Camera: FC<CameraProps> = () => {
   const mode = useAtomValue(cameraStateAtom);
   const { camera } = useThree((camera) => camera);
 
-  const cameraPos = useMemo(() => new Vector3(0, 0, 0), []);
-  const currentLookAtPos = useMemo(() => new Vector3(0, 0, 0), []);
-  const targetLookAtPos = useMemo(() => new Vector3(0, 0, 0), []);
+  const [cameraPos] = useState(() => new Vector3(0, 0, 0));
+  const [currentLookAtPos] = useState(() => new Vector3(0, 0, 0));
+  const [targetLookAtPos] = useState(() => new Vector3(0, 0, 0));
 
   useFrame(() => {
     if (isDebug) {
