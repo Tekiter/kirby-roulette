@@ -42,7 +42,7 @@ export const useSpinner = () => {
     return () => {
       release();
     };
-  }, []);
+  }, [setSpinnerState, value]);
 
   return {
     angleMotionValue: value,

@@ -74,7 +74,7 @@ const ItemList: FC<ItemListProps> = () => {
     return () => {
       window.removeEventListener("keydown", handler);
     };
-  }, []);
+  }, [handleClose]);
 
   return (
     <div className="absolute top-0 right-0 bottom-0 max-w-full overflow-hidden font-hand">
@@ -93,6 +93,7 @@ const ItemList: FC<ItemListProps> = () => {
               <div className="flex">
                 <h1 className="text-lg pt-3 pl-3 grow">Edit Item</h1>
                 <button
+                  type="button"
                   className="hover:bg-purple-300 w-8 h-8 mt-1 mr-1 flex items-center justify-center rounded focus:outline-none"
                   aria-label="Close"
                   onClick={handleClose}
@@ -110,6 +111,7 @@ const ItemList: FC<ItemListProps> = () => {
                   onKeyDown={handleKeyDown}
                 />
                 <button
+                  type="button"
                   onClick={addItem}
                   className="ml-2 rounded bg-purple-500/40 px-3"
                 >
@@ -134,6 +136,7 @@ const ItemList: FC<ItemListProps> = () => {
                         {item.content}
                       </div>
                       <button
+                        type="button"
                         className="w-10 mr-3 rounded hover:bg-purple-400/20 transition-colors flex justify-center items-center"
                         onClick={() => handleDelete(item.key)}
                       >
@@ -148,6 +151,7 @@ const ItemList: FC<ItemListProps> = () => {
                 className="flex items-center ml-3 py-2 text-slate-700"
                 href="https://github.com/Tekiter/kirby-roulette"
                 target="_blank"
+                rel="noreferrer noopener"
               >
                 <svg
                   width="15"

@@ -37,7 +37,7 @@ const Camera: FC<CameraProps> = () => {
       cameraPos.set(0, 3.6, 7);
       targetLookAtPos.set(0, 2.7, 0);
     }
-  }, [mode, isDebug]);
+  }, [mode, isDebug, cameraPos, targetLookAtPos]);
 
   return <></>;
 };

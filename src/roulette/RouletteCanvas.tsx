@@ -44,6 +44,7 @@ const RouletteCanvas: FC<RouletteProps> = () => {
       </div>
       {import.meta.env.DEV ? (
         <button
+          type="button"
           className="absolute left-0 bottom-0"
           onClick={() => {
             setIsDebug((debug) => !debug);

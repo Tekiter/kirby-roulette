@@ -26,6 +26,7 @@ const MobileButtons: FC = () => {
             exit={{ opacity: 0 }}
           >
             <button
+              type="button"
               className="px-3 py-2 flex items-center text-xl rounded bg-purple-500/30 backdrop-blur-sm"
               onClick={handleEdit}
             >

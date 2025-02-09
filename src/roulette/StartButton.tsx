@@ -31,6 +31,8 @@ const StartButton: FC<ButtonProps> = ({
         preservedOnClick();
 
         setPressed(true);
+
+        // eslint-disable-next-line @eslint-react/web-api/no-leaked-event-listener -- this handler will automatically be removed because of {once: true}
         document.addEventListener("keyup", () => setPressed(false), {
           once: true,
         });
@@ -42,7 +44,7 @@ const StartButton: FC<ButtonProps> = ({
     return () => {
       document.removeEventListener("keydown", keydown);
     };
-  }, []);
+  }, [preservedOnClick]);
 
   return (
     <group
