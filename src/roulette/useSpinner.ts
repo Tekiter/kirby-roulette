@@ -3,7 +3,7 @@ import { useAtom, useSetAtom } from "jotai";
 import { MersenneTwister19937, real } from "random-js";
 import { useEffect } from "react";
 
-import { spinnerStateAtom, targetAngleAtom } from "./states";
+import { spinnerStateAtom, targetAngleAtom } from "./states/spinner";
 
 const engine = MersenneTwister19937.autoSeed();
 

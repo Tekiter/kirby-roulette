@@ -5,7 +5,7 @@ import { FC, useState } from "react";
 import { MeshBasicMaterial } from "three";
 
 import useEventLogger from "../eventLogger/useEventLogger";
-import { cameraStateAtom } from "./states";
+import { cameraStateAtom } from "./states/spinner";
 
 interface EditButtonProps {
   position: [number, number, number];

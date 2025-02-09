@@ -12,7 +12,8 @@ import {
 
 import useEventLogger from "../eventLogger/useEventLogger";
 import { usePreservedCallback } from "../utils/usePreservedCallback";
-import { cameraStateAtom, entryListAtom, spinnerStateAtom } from "./states";
+import { entryListAtom } from "./states/list";
+import { cameraStateAtom, spinnerStateAtom } from "./states/spinner";
 
 interface ItemListProps {}
 

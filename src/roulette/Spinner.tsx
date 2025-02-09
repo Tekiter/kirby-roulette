@@ -10,12 +10,12 @@ import EditButton from "./EditButton";
 import ResultBoard from "./ResultBoard";
 import RouletteBox from "./RouletteBox";
 import StartButton from "./StartButton";
+import { entryListAtom } from "./states/list";
 import {
   cameraStateAtom,
-  entryListAtom,
   spinnerStateAtom,
   targetItemAtom,
-} from "./states";
+} from "./states/spinner";
 import { useSpinner } from "./useSpinner";
 
 export default function Spinner() {

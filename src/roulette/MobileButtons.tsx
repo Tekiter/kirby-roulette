@@ -4,7 +4,7 @@ import { useAtom } from "jotai";
 import { FC } from "react";
 
 import useEventLogger from "../eventLogger/useEventLogger";
-import { cameraStateAtom } from "./states";
+import { cameraStateAtom } from "./states/spinner";
 
 const MobileButtons: FC = () => {
   const [cameraState, setCameraState] = useAtom(cameraStateAtom);
