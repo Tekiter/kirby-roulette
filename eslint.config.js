@@ -3,6 +3,7 @@ import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import eslintReact from "@eslint-react/eslint-plugin";
 import eslintPluginReactHooks from "eslint-plugin-react-hooks";
+import eslintConfigPrettier from "eslint-config-prettier";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -10,9 +11,6 @@ export default [
   {
     languageOptions: {
       globals: globals.browser,
-      parserOptions: {
-        projectService: true,
-      },
     },
   },
   pluginJs.configs.recommended,
@@ -23,5 +21,17 @@ export default [
       "react-hooks": eslintPluginReactHooks,
     },
     rules: { ...eslintPluginReactHooks.configs.recommended.rules },
+  },
+  eslintConfigPrettier,
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": [
+        "error",
+        {
+          ignoreRestArgs: true,
+        },
+      ],
+    },
   },
 ];
