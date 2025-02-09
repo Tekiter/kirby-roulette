@@ -26,7 +26,7 @@ const StartButton: FC<ButtonProps> = ({
 
   useEffect(() => {
     const keydown = (e: KeyboardEvent) => {
-      if (e.key === " ") {
+      if (document.activeElement?.tagName !== "INPUT" && e.key === " ") {
         preservedOnClick();
 
         setPressed(true);
