@@ -1,6 +1,5 @@
 import { Suspense, lazy } from "react";
 import AmplitudeProvider from "./eventLogger/AmplitudeProvider";
-import Canvas from "./roulette/RouletteCanvas";
 import ItemList from "./roulette/ItemList";
 import MobileButtons from "./roulette/MobileButtons";
 import { Loading } from "./Loading";
