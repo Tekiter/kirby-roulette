@@ -7,7 +7,7 @@ import { isDebugAtom } from "./states/debug";
 
 interface CameraProps {}
 
-const Camera: FC<CameraProps> = ({}) => {
+const Camera: FC<CameraProps> = () => {
   const isDebug = useAtomValue(isDebugAtom);
   const mode = useAtomValue(cameraStateAtom);
   const { camera } = useThree((camera) => camera);

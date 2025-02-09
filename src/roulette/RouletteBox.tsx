@@ -7,7 +7,7 @@ import {
   useCursor,
 } from "@react-three/drei";
 import { FC, Suspense, useState } from "react";
-import { Event, MeshBasicMaterial, MeshStandardMaterial } from "three";
+import { MeshBasicMaterial, MeshStandardMaterial } from "three";
 import { FONT } from "./const";
 
 interface RouletteBoxProps {}
@@ -20,12 +20,12 @@ const bodyMaterial = new MeshStandardMaterial({
   roughness: 1,
 });
 
-const RouletteBox: FC<RouletteBoxProps> = ({}) => {
+const RouletteBox: FC<RouletteBoxProps> = () => {
   const [isHoverLink, setIsHoverLink] = useState(false);
 
   useCursor(isHoverLink);
 
-  function handleClickGithub(e: Event) {
+  function handleClickGithub() {
     window.open("https://github.com/Tekiter/kirby-roulette");
   }
 

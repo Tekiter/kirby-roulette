@@ -9,7 +9,7 @@ import { isDebugAtom } from "./states/debug";
 
 interface RouletteProps {}
 
-const RouletteCanvas: FC<RouletteProps> = ({}) => {
+const RouletteCanvas: FC<RouletteProps> = () => {
   const [isDebug, setIsDebug] = useAtom(isDebugAtom);
 
   return (

@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 
-export const usePreservedCallback = <T extends (...args: any[]) => any>(
+export const usePreservedCallback = <T extends (...args: any[]) => unknown>(
   callback: T
 ): T => {
   const ref = useRef(callback);

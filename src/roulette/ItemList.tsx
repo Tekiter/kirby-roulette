@@ -15,7 +15,7 @@ import { usePreservedCallback } from "../utils/usePreservedCallback";
 
 interface ItemListProps {}
 
-const ItemList: FC<ItemListProps> = ({}) => {
+const ItemList: FC<ItemListProps> = () => {
   const { logEvent } = useEventLogger();
   const [itemList, setItemList] = useAtom(entryListAtom);
   const [mode, setMode] = useAtom(cameraStateAtom);

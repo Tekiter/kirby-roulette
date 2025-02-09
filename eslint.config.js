@@ -32,6 +32,12 @@ export default [
           ignoreRestArgs: true,
         },
       ],
+      "@typescript-eslint/no-empty-object-type": [
+        "error",
+        {
+          allowInterfaces: "always",
+        },
+      ],
     },
   },
 ];
