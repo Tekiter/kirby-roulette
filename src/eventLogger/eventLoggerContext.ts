@@ -1,8 +1,8 @@
 import { createContext } from "react";
 
 interface Events {
-  "Action-SpinRoulette": {};
-  "Action-EditMode": {};
+  "Action-SpinRoulette": undefined;
+  "Action-EditMode": undefined;
   "Action-AddItem": {
     length: number;
   };
@@ -12,7 +12,10 @@ interface Events {
 }
 
 export interface EventLoggerController {
-  logEvent<K extends keyof Events>(key: K, data: Events[K]): void;
+  logEvent<K extends keyof Events>(
+    key: K,
+    ...args: Events[K] extends undefined ? [] : [arg: Events[K]]
+  ): void;
 }
 
 export const EventLoggerContext = createContext<EventLoggerController>(

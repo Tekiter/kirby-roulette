@@ -14,7 +14,8 @@ const AmplitudeProvider: FC<EventLoggerProviderProps> = ({
   apiKey,
 }) => {
   const [controller, setController] = useState<EventLoggerController>({
-    logEvent(key, data) {
+    logEvent(key, ...args) {
+      const data = args[0] ?? {};
       console.log("[LogEvent]", key, data);
     },
   });
@@ -25,7 +26,8 @@ const AmplitudeProvider: FC<EventLoggerProviderProps> = ({
       instance.init(apiKey);
 
       setController({
-        logEvent(key, data) {
+        logEvent(key, ...args) {
+          const data = args[0] ?? {};
           instance.logEvent(key, data);
         },
       });

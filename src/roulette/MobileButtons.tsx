@@ -11,7 +11,7 @@ const MobileButtons: FC = () => {
 
   function handleEdit() {
     setCameraState("edit");
-    logEvent("Action-SpinRoulette", {});
+    logEvent("Action-SpinRoulette");
   }
 
   return (

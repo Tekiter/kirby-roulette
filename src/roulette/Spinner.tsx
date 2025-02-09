@@ -38,7 +38,7 @@ export default function Spinner() {
     }
     start();
     setMode("play");
-    logEvent("Action-SpinRoulette", {});
+    logEvent("Action-SpinRoulette");
   });
 
   return (
