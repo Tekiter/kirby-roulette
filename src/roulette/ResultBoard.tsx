@@ -1,7 +1,8 @@
 import { MeshTransmissionMaterial, Text } from "@react-three/drei";
-import { FC, Suspense, useEffect } from "react";
-import { motion } from "framer-motion-3d";
 import { animate, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion-3d";
+import { FC, Suspense, useEffect } from "react";
+
 import { FONT } from "./const";
 
 interface ResultProps {

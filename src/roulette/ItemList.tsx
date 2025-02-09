@@ -1,3 +1,5 @@
+import { Cross2Icon, PlusIcon, TrashIcon } from "@radix-ui/react-icons";
+import { AnimatePresence, motion } from "framer-motion";
 import { useAtom, useSetAtom } from "jotai";
 import { nanoid } from "nanoid";
 import {
@@ -7,11 +9,10 @@ import {
   useRef,
   useState,
 } from "react";
-import { entryListAtom, cameraStateAtom, spinnerStateAtom } from "./states";
-import { AnimatePresence, motion } from "framer-motion";
-import { Cross2Icon, PlusIcon, TrashIcon } from "@radix-ui/react-icons";
+
 import useEventLogger from "../eventLogger/useEventLogger";
 import { usePreservedCallback } from "../utils/usePreservedCallback";
+import { cameraStateAtom, entryListAtom, spinnerStateAtom } from "./states";
 
 interface ItemListProps {}
 

@@ -1,8 +1,9 @@
-import { Suspense, lazy } from "react";
+import { lazy,Suspense } from "react";
+
 import AmplitudeProvider from "./eventLogger/AmplitudeProvider";
+import { Loading } from "./Loading";
 import ItemList from "./roulette/ItemList";
 import MobileButtons from "./roulette/MobileButtons";
-import { Loading } from "./Loading";
 
 const LazyCanvas = lazy(() => import("./roulette/RouletteCanvas"));
 

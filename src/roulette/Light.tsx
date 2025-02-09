@@ -1,5 +1,6 @@
 import { Box, Environment, Lightformer } from "@react-three/drei";
 import { useAtomValue } from "jotai";
+
 import { isDebugAtom } from "./states/debug";
 
 export default function Light() {

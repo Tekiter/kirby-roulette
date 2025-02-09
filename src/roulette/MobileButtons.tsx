@@ -2,8 +2,9 @@ import { Pencil1Icon } from "@radix-ui/react-icons";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAtom } from "jotai";
 import { FC } from "react";
-import { cameraStateAtom } from "./states";
+
 import useEventLogger from "../eventLogger/useEventLogger";
+import { cameraStateAtom } from "./states";
 
 const MobileButtons: FC = () => {
   const [cameraState, setCameraState] = useAtom(cameraStateAtom);

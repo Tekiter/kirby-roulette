@@ -2,6 +2,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { useAtomValue } from "jotai";
 import { FC, useEffect, useMemo } from "react";
 import { Vector3 } from "three";
+
 import { cameraStateAtom } from "./states";
 import { isDebugAtom } from "./states/debug";
 

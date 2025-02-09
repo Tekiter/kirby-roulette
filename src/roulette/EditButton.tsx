@@ -1,10 +1,11 @@
 import { Center, Svg, useCursor } from "@react-three/drei";
+import { motion } from "framer-motion-3d";
 import { useAtom } from "jotai";
 import { FC, useState } from "react";
 import { MeshBasicMaterial } from "three";
-import { cameraStateAtom } from "./states";
-import { motion } from "framer-motion-3d";
+
 import useEventLogger from "../eventLogger/useEventLogger";
+import { cameraStateAtom } from "./states";
 
 interface EditButtonProps {
   position: [number, number, number];

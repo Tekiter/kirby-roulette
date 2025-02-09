@@ -2,6 +2,7 @@ import { animate, useMotionValue } from "framer-motion";
 import { useAtom, useSetAtom } from "jotai";
 import { MersenneTwister19937, real } from "random-js";
 import { useEffect } from "react";
+
 import { spinnerStateAtom, targetAngleAtom } from "./states";
 
 const engine = MersenneTwister19937.autoSeed();

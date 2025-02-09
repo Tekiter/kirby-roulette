@@ -1,8 +1,9 @@
 import { useCursor } from "@react-three/drei";
-import { FC, useEffect, useState } from "react";
-import { motion } from "framer-motion-3d";
-import { usePreservedCallback } from "../utils/usePreservedCallback";
 import { noop } from "es-toolkit";
+import { motion } from "framer-motion-3d";
+import { FC, useEffect, useState } from "react";
+
+import { usePreservedCallback } from "../utils/usePreservedCallback";
 
 interface ButtonProps {
   position?: [number, number, number];

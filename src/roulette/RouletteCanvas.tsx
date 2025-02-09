@@ -1,10 +1,11 @@
+import { OrbitControls, SoftShadows } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { useAtom } from "jotai";
 import { FC } from "react";
-import Spinner from "./Spinner";
+
 import Camera from "./Camera";
 import Light from "./Light";
-import { OrbitControls, SoftShadows } from "@react-three/drei";
-import { useAtom } from "jotai";
+import Spinner from "./Spinner";
 import { isDebugAtom } from "./states/debug";
 
 interface RouletteProps {}

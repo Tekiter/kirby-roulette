@@ -2,20 +2,21 @@ import { useFrame } from "@react-three/fiber";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useRef } from "react";
 import { Group } from "three";
-import {
-  entryListAtom,
-  cameraStateAtom,
-  targetItemAtom,
-  spinnerStateAtom,
-} from "./states";
-import StartButton from "./StartButton";
-import Disk from "./Disk";
-import { useSpinner } from "./useSpinner";
-import ResultBoard from "./ResultBoard";
-import RouletteBox from "./RouletteBox";
-import EditButton from "./EditButton";
+
 import useEventLogger from "../eventLogger/useEventLogger";
 import { usePreservedCallback } from "../utils/usePreservedCallback";
+import Disk from "./Disk";
+import EditButton from "./EditButton";
+import ResultBoard from "./ResultBoard";
+import RouletteBox from "./RouletteBox";
+import StartButton from "./StartButton";
+import {
+  cameraStateAtom,
+  entryListAtom,
+  spinnerStateAtom,
+  targetItemAtom,
+} from "./states";
+import { useSpinner } from "./useSpinner";
 
 export default function Spinner() {
   const { logEvent } = useEventLogger();

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+
 import { EventLoggerContext } from "./eventLoggerContext";
 
 const useEventLogger = () => {

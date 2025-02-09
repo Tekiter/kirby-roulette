@@ -1,6 +1,7 @@
 import { Text } from "@react-three/drei";
-import { FC, Suspense } from "react";
 import { motion } from "framer-motion-3d";
+import { FC, Suspense } from "react";
+
 import { FONT } from "./const";
 
 interface DiskProps {
